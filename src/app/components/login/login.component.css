@@ -1,0 +1,146 @@
+.authentification-page{
+    padding: 0;
+}
+.authentification-page {
+width: 100%;
+display: flex;
+}
+.authentication-form-container{
+background-color: var(--primary-light);
+
+}
+.authentication-page-illustration-img-container,
+.authentication-form-container {
+width: 50%;
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.authentication-page-illustration-img-container {
+background-color: var( --green);
+justify-content: center;
+}
+
+.authentication-page-illustration-img-container img {
+max-width: 70%;
+width: 70%;
+}
+
+.authentication-page-illustration-img-container .welcome-message {
+color: var(--primary-light);
+text-align: center;
+padding-bottom: 6rem;
+}
+.authentication-form-container .logo-box {
+padding: 8% 0;
+}
+.form-submit-btn {
+border: 1px solid var(--green);
+color: var(--green);
+background: rgba(98, 61, 145, 0.2);
+cursor: pointer;
+}
+.authentication-form {
+width: 60%;
+margin: 0 auto;
+}
+.authentication-form p {
+text-align: center;
+font-weight: 700;
+font-size: 30px;
+padding-bottom: 3rem;
+}
+.form-field,
+.input-with-link-form-group {
+display: flex;
+align-items: center;
+border: 1px solid var( --text-light);
+border-radius: 4px;
+}
+
+.input-with-link-form-group {
+justify-content: space-between;
+}
+
+.input-with-link-form-group a {
+padding-right: 1rem;
+}
+
+.form-field input,
+.input-with-link-form-group input {
+border: none;
+outline: none;
+width: 90%;
+padding: 1rem;
+background-color: var(--primary-light);
+}
+
+.form-field i {
+padding-left: 1rem;
+color: var(--green);
+}
+
+.form-group-row {
+display: flex;
+justify-content: space-between;
+width: 100%;
+}
+
+.u-margin-bottom-small {
+margin-bottom: 2rem;
+}
+.btn-flex {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+}
+.btn-flex .btn {
+width: 100%;
+text-align: center;
+margin: 0;
+}
+
+.welcome-message p:first-of-type {
+font-size: 45px;
+font-weight: 700;
+padding-bottom: 1.5rem;
+}
+.welcome-message p:last-of-type {
+font-size: 20px;
+font-weight: 400;
+}
+.u-padding-top-small {
+padding-top: 2rem;
+}
+
+@media only screen and (max-width:1060px) {
+
+
+.authentication-form-container{
+    padding-top: 10%;
+}
+}
+
+@media only screen and (max-width:806px) {
+
+.authentication-page-illustration-img-container{
+    display: none;
+}
+.authentication-form-container{
+    padding-top: 10%;
+    width: 100%;
+}
+}
+
+@media only screen and (max-width:484px) {
+
+.logo-box img{
+   height: 50% !important;
+}
+.logo-box{
+padding: 0;
+height: 15%;
+}
+}
