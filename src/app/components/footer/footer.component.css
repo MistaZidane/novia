@@ -1,0 +1,22 @@
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 260px;
+    width: calc(100% - 260px);
+    background-color: var(--light-bg);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+footer p{
+    font-size: 16px;
+    color: #444;
+}
+footer p a{
+    color: var(--primary-color);
+}
+footer .con{
+    display: flex;
+    justify-content: space-between;
+}

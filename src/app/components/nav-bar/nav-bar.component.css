@@ -1,0 +1,31 @@
+header{
+    position: fixed;
+    top: 0;
+    left: 260px;
+    width: calc(100% - 260px);
+    background-color: var(--light-bg);
+    border-bottom: 2px solid #BDBDBD;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+}
+ .expand{
+    
+        left: 0;
+        width: 100vw;
+    
+}
+@media screen and (min-width: 768px) and (max-width: 1023px){
+   header {
+    width: 100vw;
+    left: 0;
+} 
+}
+@media screen and (min-width: 150px) and (max-width: 768px){
+    header {
+     width: 100vw;
+     left: 0;
+ } 
+ }
+

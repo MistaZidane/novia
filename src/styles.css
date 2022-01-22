@@ -147,6 +147,7 @@ section {
 .dashboard-grid .sidebar {
     width: 260px;
     height: 100vh;
+
     background-color: var(--dark-bg);
     position: fixed;
     top: 0;
@@ -158,6 +159,7 @@ section {
     height: 100vh;
     background-color: var(--dark-bg);
     position: fixed;
+    display: hidden;
     top: 0;
     left: -260px;
 }
