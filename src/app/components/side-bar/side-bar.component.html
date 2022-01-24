@@ -1,29 +1,29 @@
 <div class="sidebar">
     <div class="logo">
-        <a href="index.html"><img src="./assets/images/logo/logo.png" alt=""></a>
+        <a [routerLink]="['/home']"><img src="./assets/images/logo/logo.png" alt=""></a>
     </div>
     <div class="menu">
         <div class="sub-menu">
             <div class="title">MAIN NAVIGATION</div>
-            <a class="link active" href="create-post.html">
-                <i class="fa fa-thumbtack" aria-hidden="true"></i>
-                <span>Create New Post</span>
+            <a class="link " [routerLink]="['/home']" routerLinkActive="active"  >
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span>Home</span>
             </a>
-            <a class="link" href="posts.html">
-                <i class="fa fa-thumbtack" aria-hidden="true"></i>
-                <span>View all posts</span>
+            <a class="link" [routerLink]="['/courses']" routerLinkActive="active">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                <span>Courses</span>
             </a>
-            <a class="link" href="manage-categories.html">
-                <i class="fa fa-thumbtack" aria-hidden="true"></i>
-                <span>Manage categories</span>
+            <a class="link"[routerLink]="['/campus']" routerLinkActive="active" >
+                <i class="fa fa-university" aria-hidden="true"></i>
+                <span>Campuses</span>
             </a>
-            <a class="link" href="categories.html">
-                <i class="fa fa-file" aria-hidden="true"></i>
-                <span>Pages</span>
+            <a class="link"  [routerLink]="['/lecturers']" routerLinkActive="active">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>Lecturers</span>
             </a>
-            <a class="link" href="mails.html">
-                <i class="fa fa-file" aria-hidden="true"></i>
-                <span>Sent Mail</span>
+            <a class="link" [routerLink]="['/departments']" routerLinkActive="active">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span>Departments</span>
             </a>
             <a class="link" href="write-mail.html">
                 <i class="fa fa-file" aria-hidden="true"></i>

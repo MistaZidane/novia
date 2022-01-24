@@ -28,23 +28,24 @@
               </div>
              
             </form> -->
-            <form class="authentication-form">
+            <form class="authentication-form" (ngSubmit)="submit()">
+                <h4 *ngIf="error">{{error}}</h4>
                 <p>Login</p>
                     <div class="form-field u-margin-bottom-small">
                        
                     
                         <i class="fas fa-user "></i>
-                        <input type="email" name="" id="" placeholder="Email">
+                        <input type="email" name="email" id="email" placeholder="Email" [(ngModel)]="email">
                     </div>
                     <div class="form-field u-margin-bottom-small">
                         
                        
                         <i class="fas fa-lock "></i>
-                        <input type="password" name="" id="" placeholder="Password">
+                        <input type="password" name="password" id="password" placeholder="Password" [(ngModel)]="password">
                        
                     </div>
                     <div class="btn-flex">
-                          <input type="submit" value="Login" class="btn btn-green">
+                          <input type="submit" value="Login" class="btn btn-green" >
                     </div>
                   
             </form>
