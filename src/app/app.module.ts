@@ -22,6 +22,7 @@ import { LecturerComponent } from './components/lecturer/lecturer.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { JwtInterceptor } from './jwt.interceptor';
 import { TimeTableComponent } from './components/time-table/time-table.component';
+import { SeatingComponent } from './components/seating/seating.component';
 
 
 
@@ -42,7 +43,8 @@ export function tokenGetter() {
     CampusComponent,
     LecturerComponent,
     DepartmentsComponent,
-    TimeTableComponent
+    TimeTableComponent,
+    SeatingComponent
   ],
   imports: [
     BrowserModule,

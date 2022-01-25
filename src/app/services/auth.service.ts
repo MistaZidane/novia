@@ -17,7 +17,7 @@ export class AuthService {
       .pipe(
         map(result => {
           console.log(result);
-          
+          localStorage.setItem('user', JSON.stringify(result));
           localStorage.setItem('token', result.token);
           return true;
         })
@@ -46,6 +46,7 @@ export class AuthService {
     }
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
   // checkTokenStatus(){
   //   let headers = new HttpHeaders();

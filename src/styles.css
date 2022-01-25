@@ -514,30 +514,7 @@ section {
     align-items: center;
 }
 
-.user-menu-footer a {
-    text-decoration: none;
-    font-size: 18px;
-    color: rgb(73, 84, 95);
-    border: 1px solid #ccc;
-    padding: .3rem;
-    border-radius: 5px;
-    transition-duration: .3s;
-}
 
-.user-menu-footer a:hover {
-    background-color: var(--text);
-    color: #fff;
-    transition-duration: .3s;
-}
-
-.user-menu-footer a i {
-    margin-right: .3rem;
-}
-
-.user-menu-footer a:hover i {
-    color: #fff;
-    transition-duration: .3s;
-}
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {}
 
@@ -2096,6 +2073,28 @@ form .flex .login-remember img {
 
 /* end of category styles  */
 
+/* select dropdown */
+.my-select{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-image: url("./assets/images/svg/dropdownIcon.svg");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    background-color: var(--green);
+    color: white;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
 @media screen and (min-width: 768px) and (max-width: 1023px) {}
 
 @media screen and (max-width: 767px) {}

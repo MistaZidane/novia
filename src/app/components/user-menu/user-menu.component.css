@@ -1,0 +1,24 @@
+.user-menu-footer button {
+    text-decoration: none;
+    font-size: 18px;
+    color: rgb(73, 84, 95);
+    border: 1px solid #ccc;
+    padding: .3rem;
+    border-radius: 5px;
+    transition-duration: .3s;
+}
+
+.user-menu-footer button:hover {
+    background-color: var(--text);
+    color: #fff;
+    transition-duration: .3s;
+}
+
+.user-menu-footer button i {
+    margin-right: .3rem;
+}
+
+.user-menu-footer button:hover i {
+    color: #fff;
+    transition-duration: .3s;
+}

@@ -2,11 +2,11 @@
     <div class="user-menu-top">
         <i class="fa fa-times" id="close" (click)="userMenuClose()"></i>
         <img src="./assets/images/users/user-1.png" alt="">
-        <p>Mista Zidane</p>
-        <span>Admin User</span>
+        <p>Admin</p>
+        <span *ngIf="loaded">{{user.email}}</span>
     </div>
     <div class="user-menu-footer">
-        <a href="../404.html"><i class="fas fa-cog"></i> Settings</a>
-        <a href=""><i class="fas fa-door-open"></i> Logout</a>
+        <button href="../404.html"><i class="fas fa-cog"></i> Settings</button>
+        <button (click)="logout()"><i class="fas fa-door-open"></i> Logout</button>
     </div>
 </div>

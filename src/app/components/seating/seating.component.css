@@ -1,0 +1,14 @@
+.name{
+    text-align: center;
+}
+th{
+    font-weight: bold;
+    color: black !important;
+}
+td{
+    color: gray !important;
+}
+th, td, table{
+    border: solid 1px var(--border-color); 
+    border-collapse: collapse; 
+}
