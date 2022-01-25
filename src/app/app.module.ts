@@ -23,6 +23,8 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { JwtInterceptor } from './jwt.interceptor';
 import { TimeTableComponent } from './components/time-table/time-table.component';
 import { SeatingComponent } from './components/seating/seating.component';
+import { LogsComponent } from './components/logs/logs.component';
+import { EmailingComponent } from './components/emailing/emailing.component';
 
 
 
@@ -31,6 +33,7 @@ export function tokenGetter() {
 }
 @NgModule({
   declarations: [
+    
     AppComponent,
     LoginComponent,
     MainComponent,
@@ -44,7 +47,10 @@ export function tokenGetter() {
     LecturerComponent,
     DepartmentsComponent,
     TimeTableComponent,
-    SeatingComponent
+    SeatingComponent,
+    LogsComponent,
+    EmailingComponent
+    
   ],
   imports: [
     BrowserModule,

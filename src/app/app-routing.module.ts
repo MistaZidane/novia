@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CampusComponent } from './components/campus/campus.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { EmailingComponent } from './components/emailing/emailing.component';
 import { HomeComponent } from './components/home/home.component';
 import { LecturerComponent } from './components/lecturer/lecturer.component';
 // import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { LogsComponent } from './components/logs/logs.component';
 import { MainComponent } from './components/main/main.component';
 import { SeatingComponent } from './components/seating/seating.component';
 import { TimeTableComponent } from './components/time-table/time-table.component';
@@ -23,6 +25,8 @@ const routes: Routes = [
     {path:'departments', component: DepartmentsComponent},
     {path:'time-table', component: TimeTableComponent},
     {path:'seating', component: SeatingComponent},
+    {path:'logs', component: LogsComponent},
+    {path:'emailing', component: EmailingComponent},
 
   ] },
   {path:"login", component:LoginComponent, canActivate: [SignedInGuard]},
