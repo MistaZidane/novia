@@ -24,60 +24,18 @@
                                         <th class="action">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody *ngIf="loaded">
+
+                                    <tr *ngFor="let item of data">
                                         <td class="flex-center">#</td>
-                                        <td class="flex-strat">Course name</td>
+                                        <td class="flex-strat">{{item.title}}</td>
                                         <td class="flex-center">
                                             <div class="action">
                                                 <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                 <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </div>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Course name</td>
-                                        <td class="flex-center">
-                                            <div class="action">
-                                                <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Course name</td>
-                                        <td class="flex-center">
-                                            <div class="action">
-                                                <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Course name</td>
-                                        <td class="flex-center">
-                                            <div class="action">
-                                                <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Course name</td>
-                                        <td class="flex-center">
-                                            <div class="action">
-                                                <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                   
-                                   
-                                   
+                                    </tr> 
                                 </tbody>
                             </table>
                         </div>

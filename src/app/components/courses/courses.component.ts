@@ -7,11 +7,19 @@ import { CourseService } from 'src/app/services/course.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-public data = [];
+public data:any;
+public loaded = false;
   constructor(public courseService: CourseService) { }
 
   ngOnInit(): void {
+    this.courseService.getCourses().subscribe((ob:any)=>{
 
+
+      this.data = ob.docs;
+      this.loaded = true;
+      console.log(this.data);
+      
+    })
   }
 
   getData(){
