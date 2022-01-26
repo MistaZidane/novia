@@ -7,7 +7,7 @@ import { map } from 'rxjs/internal/operators/map';
 })
 export class CourseService {
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient) { }
 
   public getCourses(){
        return this.http.get('http://localhost:8000/courses');

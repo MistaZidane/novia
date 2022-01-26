@@ -16,11 +16,11 @@
                         <div class="title border">
                             <p>Mail</p>
                         </div>
-                        <form class="">
+                        <form class="" (ngSubmit)="sendEmail()">
                             <div class="form-section">
                                 <div class="form-field">
                                     <label for="">Subject</label>
-                                    <input type="text" name=""  placeholder="Economics">
+                                    <input type="text" name="subject"  placeholder="New Time table" [(ngModel)]="subject">
                                 </div>
                                 <!-- <div class="form-field">
                                     <label for="">Recipients</label>
@@ -28,10 +28,10 @@
                                 </div> -->
                                 <div class="form-field">
                                     <label for="">Message</label>
-                                   <textarea name="message" cols="30" rows="10"></textarea>
+                                   <textarea name="message" [(ngModel)]="message" cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="btn-flex">
-                                    <button class="btn btn-green">Send Mail</button>
+                                    <button type="submit" class="btn btn-green">Send Mail</button>
                                 </div>
                             </div>
                         </form>

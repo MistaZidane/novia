@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmailService } from 'src/app/services/email.service';
 
 
 @Component({
@@ -7,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./emailing.component.css']
 })
 export class EmailingComponent implements OnInit {
-  
-  constructor() { }
+  public message: string  ='';
+  public subject: string = '';
+  public to: object = {};
+   
+  constructor(private emailService: EmailService) { }
 
   ngOnInit(): void {
+  }
+
+  sendEmail(){
+    this.emailService.sendEmails(this.subject, this.message, {domain:"", lecturers:true, students:false}).subscribe(ob=>{
+      console.log(ob);
+      
+    })
   }
 
 }
