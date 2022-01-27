@@ -25,6 +25,7 @@ import { TimeTableComponent } from './components/time-table/time-table.component
 import { SeatingComponent } from './components/seating/seating.component';
 import { LogsComponent } from './components/logs/logs.component';
 import { EmailingComponent } from './components/emailing/emailing.component';
+import { GenerateComponent } from './components/generate/generate.component';
 
 
 
@@ -49,7 +50,8 @@ export function tokenGetter() {
     TimeTableComponent,
     SeatingComponent,
     LogsComponent,
-    EmailingComponent
+    EmailingComponent,
+    GenerateComponent
     
   ],
   imports: [

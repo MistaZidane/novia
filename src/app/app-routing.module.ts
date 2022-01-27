@@ -4,6 +4,7 @@ import { CampusComponent } from './components/campus/campus.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { EmailingComponent } from './components/emailing/emailing.component';
+import { GenerateComponent } from './components/generate/generate.component';
 import { HomeComponent } from './components/home/home.component';
 import { LecturerComponent } from './components/lecturer/lecturer.component';
 // import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
     {path:'seating', component: SeatingComponent},
     {path:'logs', component: LogsComponent},
     {path:'emailing', component: EmailingComponent},
+    {path:'generate', component: GenerateComponent},
 
   ] },
   {path:"login", component:LoginComponent, canActivate: [SignedInGuard]},
