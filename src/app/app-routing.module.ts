@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CampusComponent } from './components/campus/campus.component';
+import { EditCampusesComponent } from './components/campus/edit-campuses/edit-campuses.component';
+import { ViewCampusesComponent } from './components/campus/view-campuses/view-campuses.component';
 import { CoursesComponent } from './components/courses/courses.component';
+import { AddDepartmentComponent } from './components/departments/add-department/add-department.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { EditDepartmentsComponent } from './components/departments/edit-departments/edit-departments.component';
+import { ViewDepartmentsComponent } from './components/departments/view-departments/view-departments.component';
 import { EmailingComponent } from './components/emailing/emailing.component';
 import { GenerateComponent } from './components/generate/generate.component';
 import { HomeComponent } from './components/home/home.component';
@@ -21,9 +26,18 @@ const routes: Routes = [
     {path:'', component:HomeComponent},
     {path:'home', component:HomeComponent},
     {path:'courses', component:CoursesComponent},
-    {path:'campus', component:CampusComponent},
+    {path:'campus', component:CampusComponent, children:[
+      {path:'', component: ViewCampusesComponent},
+      {path:'view-campuses', component: ViewCampusesComponent},
+      {path:'edit-campus/:id', component: EditCampusesComponent}
+    ]},
     {path:'lecturers', component: LecturerComponent},
-    {path:'departments', component: DepartmentsComponent},
+    {path:'departments', component: DepartmentsComponent, children:[
+      {path:'', component: ViewDepartmentsComponent},
+      {path:'view-departments', component: ViewDepartmentsComponent},
+      {path:'edit-department', component: EditDepartmentsComponent},
+      {path:'add-department', component:AddDepartmentComponent }
+    ] },
     {path:'time-table', component: TimeTableComponent},
     {path:'seating', component: SeatingComponent},
     {path:'logs', component: LogsComponent},

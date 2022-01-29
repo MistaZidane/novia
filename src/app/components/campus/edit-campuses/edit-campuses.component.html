@@ -1,0 +1,70 @@
+<div class="section">
+    <div class="flex-2-1 category">
+        <div>
+            <div class="parent-con">
+                <div class="title border">
+                    <p *ngIf="showData">{{data.name}}</p>
+                </div>
+                <div class="table-con">
+                    <div *ngIf="noClass">
+                        <P>No Class Added Yet</P>
+                    </div>
+                    <table *ngIf="!noClass">
+                        <thead>
+                            <tr>
+                                <th class="num">#</th>
+                                <th class="name">Class Name</th>
+                                <th class="name">Size</th>
+                              
+                                <th class="action">Actions</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of classes">
+                                <td class="flex-center">#</td>
+                                <td class="flex-strat">{{item.name}}</td>
+                                <td class="flex-strat">{{item.size}}</td>
+                           
+
+                                <td class="flex-center">
+                                    <div class="action">
+                                        <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a (click)="showDeleteBtn(item._id)" *ngIf="!item.showDelete" class="patial-delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <a (click)="delete(item._id)" *ngIf="item.showDelete"  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                         
+                           
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="create-category parent-con">
+                <div class="title border">
+                    <p>Add Class</p>
+                </div>
+                <form class="" (ngSubmit)="addClass()">
+                    <div class="form-section">
+                        <div class="form-field">
+                            <label for="">Class name</label>
+                            <input type="text" name="name" placeholder="Class Name" [(ngModel)]="classData.name">
+                        </div>
+                        <div class="form-field">
+                            <label for="">Size</label>
+                            <input type="number" name="size" placeholder="35" [(ngModel)]="classData.size"> 
+                        </div>
+                        <div class="btn-flex">
+                            <button class="btn btn-green" type="submit">Add New</button>
+                            <!-- <a class="btn btn-green">Add New</a> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

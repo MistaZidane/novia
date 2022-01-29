@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-campus',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./campus.component.css']
 })
 export class CampusComponent implements OnInit {
-
-  constructor() { }
+public data:any;
+public dataLoaded = false;
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+
+    // this.dataService.getCampuses().subscribe((ob:any)=>{
+    //   if(ob.success){
+    //     console.log(ob.docs);
+    //     this.data = ob.docs;
+    //     this.dataLoaded = true;
+        
+    //   }
+    // })
   }
 
 }

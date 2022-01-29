@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseService } from 'src/app/services/course.service';
+import { DataService } from 'src/app/services/data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-courses',
@@ -8,25 +9,96 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class CoursesComponent implements OnInit {
 public data:any;
+public departmentList:any;
 public loaded = false;
-  constructor(public courseService: CourseService) { }
+
+public title: string = "";
+public description: string = "";
+
+  constructor(public dataService: DataService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.courseService.getCourses().subscribe((ob:any)=>{
+    this.dataService.getCourses().subscribe((ob:any)=>{
 
-
-      this.data = ob.docs;
+      if(ob.success){
+             this.data = ob.docs;
       this.loaded = true;
-      console.log(this.data);
+      
+      }
+ 
+    });
+
+
+    // getting list of departments
+
+    this.dataService.getDepartments().subscribe((ob:any)=>{
+      if(ob.success){
+        this.departmentList = ob.docs;
+      }
+      console.log(ob);
+      
+
+    
+    });
+  }
+
+  getData(){
+    this.dataService.getCourses().subscribe((ob:any)=>{
+      console.log(ob);
+      this.data = ob.docs;
+    })
+  }
+
+  createCourse(){
+    this.dataService.createCourse(this.title,this.description).subscribe((ob: any)=>{
+      console.log(ob);
+
+      if(ob.success == true){
+        console.log("true ok na");
+        this.title = '';
+        this.description = '';
+        this.data.push(ob.docs)
+        // this.getData();
+        
+        this.toastr.success('Course Added Successfully', 'Success');
+      }
+      else{
+        this.toastr.error("Failed to add Course. Duplicate course Title","Failed");
+      }
       
     })
   }
 
-  getData(){
-    this.courseService.getCourses().subscribe(ob=>{
-      console.log(ob);
-      
+  deleteCourse(id:string){
+
+    this.dataService.deleteCourse(id).subscribe((ob:any)=>{
+      if(ob.success){
+        this.toastr.success('Course Deleted Successfully', 'Success');
+       
+        this.data = this.data.filter((el:any)=>{
+          return el._id != id;
+        });
+      }
+      else{
+        this.toastr.error("Failed to delete Course.","Failed");
+      }
     })
+  }
+
+  selectCoursesByDepartMent(departmentId:string){
+    console.log(departmentId);
+    if(departmentId== 'all'){
+      this.getData();
+    }
+    else{
+      let arr = [];
+      this.data =  this.departmentList.filter((el:any)=>{
+        return el._id == departmentId;
+      })[0].courses;
+      
+      
+    }
+    
   }
 
 }

@@ -1122,7 +1122,7 @@ section {
     padding: .5rem;
     margin-right: .5rem;
     color: #fff;
-    background-color: #eb5757;
+    background-color: #e63939;
 }
 
 .table-con table .action a.delete:hover {
@@ -2095,6 +2095,16 @@ form .flex .login-remember img {
     -moz-appearance: none;
     appearance: none;
 }
+.patial-delete{
+    font-size: 14px;
+    border-radius: 5px;
+    padding: .5rem;
+    margin-right: .5rem;
+    color: #fff;
+    background-color: #af6a41;
+}
+
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {}
 
 @media screen and (max-width: 767px) {}

@@ -14,18 +14,26 @@
         <div class="data-table">
             <div class="top">
                 <div class="span">
-                    <h1>Time Table for SWE2</h1>
+                    <h1 *ngIf="dataLoaded">Time Table for {{data.name}}</h1>
                 </div>
              
                     <!-- <input type="search" name="" id="" placeholder="Find ..."> -->
-                    <div class="btn-flex " style="padding-right: 10px;">
-                         <select name="department" class=" my-select" style="padding-left: 10px;">
-                        <option value="Swe2">SWE2</option>
-                        <option value="Swe1">SWE1</option>
-                        <option value="MIT2">MIT2</option>
-                    </select>
+                    <div style="display: flex;">
+                        <div class="btn-flex " style="padding-right: 10px;">
+                            <select name="department" class=" my-select" style="padding-left: 10px;">
+                           <option value="Swe2">SWE2</option>
+                           <option value="Swe1">SWE1</option>
+                           <option value="MIT2">MIT2</option>
+                       </select>
+                       </div>
+                       <div class="btn-flex " style="padding-right: 10px;">
+                           <select name="department" class=" my-select" style="padding-left: 10px;">
+                          <option value="Swe2">Semester 1</option>
+                          <option value="Swe1">Semester 2</option>
+                          <option value="MIT2">Semester 3</option>
+                      </select>
+                      </div>
                     </div>
-                   
                     <!-- <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button> -->
                
             </div>

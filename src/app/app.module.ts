@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './token.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +28,11 @@ import { SeatingComponent } from './components/seating/seating.component';
 import { LogsComponent } from './components/logs/logs.component';
 import { EmailingComponent } from './components/emailing/emailing.component';
 import { GenerateComponent } from './components/generate/generate.component';
+import { ViewDepartmentsComponent } from './components/departments/view-departments/view-departments.component';
+import { EditDepartmentsComponent } from './components/departments/edit-departments/edit-departments.component';
+import { AddDepartmentComponent } from './components/departments/add-department/add-department.component';
+import { ViewCampusesComponent } from './components/campus/view-campuses/view-campuses.component';
+import { EditCampusesComponent } from './components/campus/edit-campuses/edit-campuses.component';
 
 
 
@@ -51,7 +58,13 @@ export function tokenGetter() {
     SeatingComponent,
     LogsComponent,
     EmailingComponent,
-    GenerateComponent
+    GenerateComponent,
+    ViewDepartmentsComponent,
+    EditDepartmentsComponent,
+    AddDepartmentComponent,
+    ViewCampusesComponent,
+    EditCampusesComponent,
+
     
   ],
   imports: [
@@ -65,7 +78,9 @@ export function tokenGetter() {
         allowedDomains: ['localhost:4200/login'],
         disallowedRoutes: ['localhost:4200']
       }
-    })
+    }),
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
