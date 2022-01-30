@@ -5,7 +5,7 @@
             <div class="crumb">
                 <a href="index.html" class="crumb-item">Dashboard</a>
                 <span>></span>
-                <a  class="crumb-item">Courses</a>
+                <a  class="crumb-item">Semester</a>
             </div>
         </div>
        
@@ -17,17 +17,17 @@
                         <div class="data-table">
                             <div class="top">
                                 <div class="span">
-                                    <h1>All Courses</h1>
+                                    <h1>All Semesters</h1>
                                 </div>
                              
                                    
                                   <div style="display: flex; align-items: center;">
                                     <div class="btn-flex " style="padding-right: 10px;">
-                                        <select name="department" class=" my-select" style="padding-left: 10px;" #departments (change)='selectCoursesByDepartMent(departments.value)'>
+                                        <!-- <select name="department" class=" my-select" style="padding-left: 10px;" #departments (change)='selectCoursesByDepartMent(departments.value)'>
                                        <option value="all">All</option>
                                        <option *ngFor='let opt of departmentList' [value]="opt._id">{{opt.name}}</option>
                                       
-                                   </select>
+                                   </select> -->
                                    </div>
                                    <!-- <button class="btn btn-green">Add Course <i class="fa fa-plus"></i> </button> -->
                                   
@@ -36,12 +36,12 @@
                             </div>
                         
                         <div class="table-con">
-                            <p *ngIf="!hasCourses">No Course Created</p>
-                            <table *ngIf="hasCourses">
+                            <p *ngIf="!hasSemester">No Semester Created</p>
+                            <table *ngIf="hasSemester">
                                 <thead>
                                     <tr>
                                         <th class="num">#</th>
-                                        <th class="name">Course Name</th>
+                                        <th class="name">Semester Name</th>
                                         <th class="action">Actions</th>
                                     </tr>
                                 </thead>
@@ -49,12 +49,12 @@
 
                                     <tr *ngFor="let item of data">
                                         <td class="flex-center">#</td>
-                                        <td class="flex-strat">{{item.title}}</td>
+                                        <td class="flex-strat">{{item.name}}</td>
                                         <td class="flex-center">
                                             <div class="action">
                                                 <a  class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                 <a (click)="showDeleteBtn(item._id)" *ngIf="!item.showDelete" class="patial-delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                                <a (click)="deleteCourse(item._id)" *ngIf="item.showDelete"  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <a (click)="deleteSemester(item._id)" *ngIf="item.showDelete"  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </div>
                                         </td>
                                     </tr> 
@@ -70,17 +70,17 @@
                 <div>
                     <div class="create-category parent-con">
                         <div class="title border">
-                            <p>Add Course</p>
+                            <p>Add Semester</p>
                         </div>
-                        <form class="" (ngSubmit)="createCourse()">
+                        <form class="" (ngSubmit)="createSemester()">
                             <div class="form-section">
                                 <div class="form-field">
-                                    <label for="">Course title</label>
-                                    <input type="text" name="title" id="" placeholder="Course A" [(ngModel)]="title">
+                                    <label for="">Semester name</label>
+                                    <input type="text" name="title" id="" placeholder="Course A" [(ngModel)]="newSemester.name">
                                 </div>
                                 <div class="form-field">
                                     <label for="">Description</label>
-                                    <textarea type="text" name="description" [(ngModel)]="description"></textarea>
+                                    <textarea type="text" name="description" [(ngModel)]="newSemester.description"></textarea>
                                 </div>
                                 <div class="btn-flex">
                                     <button class="btn btn-green" (click)="getData()">Add New</button>

@@ -3,7 +3,14 @@
         <div>
             <div class="parent-con">
                 <div class="title border">
-                    <p *ngIf="showData">{{data.name}}</p>
+                    <!-- <p *ngIf="showData">{{data.name}}</p> -->
+                     <form action="" *ngIf="showData">
+                          <div class="form-field">
+                  
+                        <input type="text" name="name"  [(ngModel)]="data.name" style="font-size: 2rem; font-weight: bold;"> 
+                  
+                    </div>  </form>
+                    <a (click)="updateName()" *ngIf="showData" class="btn btn-green" style="align-self: end;">Save Name </a>
                 </div>
                 <div class="table-con">
                     <div *ngIf="noClass">

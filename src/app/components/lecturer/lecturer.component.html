@@ -16,10 +16,11 @@
                             <p>All Lecturers</p>
                         </div>
                         <div class="table-con">
-                            <table>
+                            <p *ngIf="!hasLecturers">No lecturer added yet</p>
+                            <table *ngIf="hasLecturers">
                                 <thead>
                                     <tr>
-                                        <th class="num">#</th>
+                                      
                                         <th class="name">Lecturer Name</th>
                                         <th class="name">Email</th>
                                         <th class="name">Phone</th>
@@ -29,72 +30,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Lecturer name</td>
-                                        <td class="flex-strat">lec@gmail.com</td>
-                                        <td class="flex-strat">+237 676983069</td>
-                                        <td class="flex-strat">courses</td>
+                                    <tr *ngFor="let item of lecturers">
+                                      
+                                        <td class="flex-strat">{{item.name}}</td>
+                                        <td class="flex-strat">{{item.email}}</td>
+                                        <td class="flex-strat">{{item.phone}}</td>
+                                        <td class="flex-strat"><select name="" id="">
+                                            <option *ngFor="let sub of item.courses" [value]="item.title" >{{sub.title}}</option>
+                                        </select></td>
 
                                         <td class="flex-center">
                                             <div class="action">
                                                 <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <a (click)="showDeleteBtn(item._id)" *ngIf="!item.showDelete" class="patial-delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                                <a (click)="deleteCourse(item._id)" *ngIf="item.showDelete"  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Lecturer name</td>
-                                        <td class="flex-strat">lec@gmail.com</td>
-                                        <td class="flex-strat">+237 676983069</td>
-                                        <td class="flex-strat">courses</td>
-                                        <td class="flex-center">
-                                            <div class="action">
-                                                <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Lecturer name</td>
-                                        <td class="flex-strat">lec@gmail.com</td>
-                                        <td class="flex-strat">+237 676983069</td>
-                                        <td class="flex-strat">courses</td>
-                                        <td class="flex-center">
-                                            <div class="action">
-                                                <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Lecturer name</td>
-                                        <td class="flex-strat">lec@gmail.com</td>
-                                        <td class="flex-strat">+237 676983069</td>
-                                        <td class="flex-strat">courses</td>
-                                        <td class="flex-center">
-                                            <div class="action">
-                                                <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="flex-center">#</td>
-                                        <td class="flex-strat">Lecturer name</td>
-                                        <td class="flex-strat">lec@gmail.com</td>
-                                        <td class="flex-strat">+237 676983069</td>
-                                        <td class="flex-strat">courses</td>
-                                        <td class="flex-center">
-                                            <div class="action">
-                                                <a href="" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                <a href="" class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                 
+                                   
                                    
                                    
                                    
@@ -108,53 +62,42 @@
                         <div class="title border">
                             <p>Add Lecturer</p>
                         </div>
-                        <form class="">
+                        <form class="" (ngSubmit)="addLecturer()">
                             <div class="form-section">
                                 <div class="form-field">
                                     <label for="">Lecturer name</label>
-                                    <input type="text" name="" placeholder="Lecturer A">
+                                    <input type="text" name="name" placeholder="Lecturer A" [(ngModel)]="newLecturer.name">
                                 </div>
                                 <div class="form-field">
                                     <label for="">Email</label>
-                                    <input type="email" name="" placeholder="test@gmail.com">
+                                    <input type="email" name="email" placeholder="test@gmail.com" [(ngModel)]="newLecturer.email">
                                 </div>
                                 <div class="form-field">
                                     <label for="">Phone</label>
-                                    <input type="phone" name="" placeholder="+237 676983069">
+                                    <input type="phone" name="phone" placeholder="+237 676983069" [(ngModel)]="newLecturer.phone">
                                 </div>
-                                <div class="form-field">
-                                    <label for="">Courses</label>
-                                    <div class="flex">
-                                        <div class="login-remember">
+                                <label for="">Courses</label>
+                                <div class="form-field " style="height: 100%; width: 100%;">
+                                  <p *ngIf="!hasCourses" style="color: indianred;">No Course Created yet. A Lecturer must be assigned to aleast one course. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
+                                    <div class=" seletedCourses" *ngIf="hasCourses">
+                                        <div class="login-remember" *ngFor="let item of courses">
                                             <div class="default-check">
-                                                <input type="checkbox" name="english" id="english">
+                                                <input type="checkbox" (change)="checkCourse($event,item._id)" [name]="item.title" id="english">
                                                 <span>
-                                                    <label for="english">English</label>
+                                                    <label [for]="item.title">{{item.title}}</label>
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="login-remember">
-                                            <div class="default-check">
-                                                <input type="checkbox" name="french" id="french">
-                                                <span>
-                                                    <label for="french">French</label>
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="login-remember">
-                                            <div class="default-check">
-                                                <input type="checkbox" name="french" id="french">
-                                                <span>
-                                                    <label for="french">Maths</label>
-                                                </span>
-                                            </div>
-                                        </div>
+                                       
                                         
                                     </div>
+
+                                   
+                                  
                                 </div>
                                 <div class="btn-flex">
-                                    <button class="btn btn-green">Add New</button>
+                                   <p *ngIf="!courseSelected" style="color: lightcoral;">Select one or more courses</p>
+                                    <button *ngIf="hasCourses && courseSelected" class="btn btn-green">Add New</button>
                                     <!-- <a class="btn btn-green">Add New</a> -->
                                 </div>
                             </div>

@@ -11,7 +11,7 @@ export class CoursesComponent implements OnInit {
 public data:any;
 public departmentList:any;
 public loaded = false;
-
+public hasCourses = false;
 public title: string = "";
 public description: string = "";
 
@@ -22,7 +22,13 @@ public description: string = "";
 
       if(ob.success){
              this.data = ob.docs;
-      this.loaded = true;
+             if(this.data.length >0){
+                  this.hasCourses = true;
+            }
+             this.data.forEach((element:any) => {
+              element.showDelete = false;
+            });
+            this.loaded = true;
       
       }
  
@@ -57,6 +63,7 @@ public description: string = "";
         console.log("true ok na");
         this.title = '';
         this.description = '';
+        this.hasCourses = true;
         this.data.push(ob.docs)
         // this.getData();
         
@@ -69,21 +76,51 @@ public description: string = "";
     })
   }
 
-  deleteCourse(id:string){
+  showDeleteBtn(id:string){
+    this.data.forEach((element:any) => {
+      if(element._id == id){
+        element.showDelete = true;
+        this.toastr.warning("Double click to delete Class", "Delete")
+      }
+    });
+    
+   
+  }
 
+  deleteCourse(id:string){
+    console.log(id);
+    
     this.dataService.deleteCourse(id).subscribe((ob:any)=>{
       if(ob.success){
-        this.toastr.success('Course Deleted Successfully', 'Success');
-       
-        this.data = this.data.filter((el:any)=>{
-          return el._id != id;
+        if(this.data.length < 1 ){
+          this.hasCourses = false;
+        }
+    this.data = this.data.filter((element:any)=>{
+          return element._id != id;
         });
+        this.toastr.success('Course Deleted Successfully', 'Success');
       }
       else{
         this.toastr.error("Failed to delete Course.","Failed");
       }
+     
     })
   }
+  // deleteCourse(id:string){
+
+  //   this.dataService.deleteCourse(id).subscribe((ob:any)=>{
+  //     if(ob.success){
+  //       this.toastr.success('Course Deleted Successfully', 'Success');
+       
+  //       this.data = this.data.filter((el:any)=>{
+  //         return el._id != id;
+  //       });
+  //     }
+  //     else{
+  //       this.toastr.error("Failed to delete Course.","Failed");
+  //     }
+  //   })
+  // }
 
   selectCoursesByDepartMent(departmentId:string){
     console.log(departmentId);

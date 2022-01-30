@@ -33,6 +33,7 @@ import { EditDepartmentsComponent } from './components/departments/edit-departme
 import { AddDepartmentComponent } from './components/departments/add-department/add-department.component';
 import { ViewCampusesComponent } from './components/campus/view-campuses/view-campuses.component';
 import { EditCampusesComponent } from './components/campus/edit-campuses/edit-campuses.component';
+import { SemesterComponent } from './components/semester/semester.component';
 
 
 
@@ -64,6 +65,7 @@ export function tokenGetter() {
     AddDepartmentComponent,
     ViewCampusesComponent,
     EditCampusesComponent,
+    SemesterComponent,
 
     
   ],

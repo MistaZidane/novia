@@ -10,27 +10,45 @@
                     <div class="form-section">
                         <div class="form-field">
                             <label for="">Department Name</label>
-                            <input type="text" name="title" id="" placeholder="Course A" >
+                            <input type="text" name="name" id="" placeholder="SWE2" >
                         </div>
 
                         <div class="form-field">
                             <label for="">Department Size</label>
-                            <input type="text" name="title" id="" placeholder="Course A" >
+                            <input type="number" name="size" id="" placeholder="50" >
                         </div>
-                        <div class="form-field">
+                        <div class="form-field" *ngIf="!hasCampuses">
+                        <p  style="color: lightcoral;">No Campus Created <a [routerLink]="['/campus']" style="color: indigo; text-decoration: underline;">Click to create a campus</a></p>
+                    </div>
+                        <div class="form-field" *ngIf="hasCampuses">
                             <label for="">Department Campus</label>
-                            <input type="text" name="title" id="" placeholder="Course A" >
+                            <select name="" id="">
+                                <option *ngFor="let item of campuses" [value]="item._id" >{{item.name}}</option>
+                               
+                            </select>
+                          
                         </div>
                         <div class="form-field">
                             <label for="">Session</label>
-                            <input type="text" name="title" id="" placeholder="Course A" >
+                            <select name="" id="">
+                                <option value="Night">Night</option>
+                                <option value="Day">Day</option>
+                            </select>
                         </div>
-                        <div class="form-field">
-                            <label for="">Description</label>
-                            <textarea type="text" name="description" ></textarea>
+                        <div class="form-field" *ngIf="!hasSemesters">
+                            <p  style="color: lightcoral;">No Semester Created <a [routerLink]="['/semester']" style="color: indigo; text-decoration: underline;">Click to create a semester</a></p>
                         </div>
+                        <div class="form-field" *ngIf="hasSemesters">
+                            <label for="">Department Campus</label>
+                            <select name="" id="">
+                                <option *ngFor="let item of semesters" [value]="item._id" >{{item.name}}</option>
+                               
+                            </select>
+                          
+                        </div>
+                      
                         <div class="btn-flex">
-                            <button class="btn btn-green" >Add New</button>
+                            <button *ngIf="hasCampuses" class="btn btn-green" >Add New</button>
                            
                         </div>
                     </div>

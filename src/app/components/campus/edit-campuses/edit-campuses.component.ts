@@ -14,6 +14,7 @@ public showData = false;
 public noClass =  true;
 public id:string = '';
 public classes:any;
+public name:string ="";
 
 public classData = {
   name:"",
@@ -31,7 +32,7 @@ public classData = {
       if(ob.success){
         // console.log(ob.docs);
         this.data = ob.docs;
-       
+        this.name = ob.docs.name;
         this.showData = true;
       }
     });
@@ -87,12 +88,27 @@ public classData = {
     
     this.dataService.deleteClass(id).subscribe((ob:any)=>{
       if(ob.success){
+        if(this.classes.length !> 0){
+          this.noClass = true;
+        }
     this.classes = this.classes.filter((element:any)=>{
           return element._id != id;
         });
         this.toast.success("Class Deleted", "Deleted")
       }
      
+    })
+  }
+
+  updateName(){
+    console.log(this.data.name);
+    this.dataService.editCampusName(this.data.name, this.id).subscribe((ob:any)=>{
+      if(ob.success){
+        this.toast.success("Campus Name Updated", "Success");
+      }
+      else{
+        this.toast.warning("Campus Name exist", "Exist");
+      }
     })
   }
 

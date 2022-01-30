@@ -17,6 +17,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LogsComponent } from './components/logs/logs.component';
 import { MainComponent } from './components/main/main.component';
 import { SeatingComponent } from './components/seating/seating.component';
+import { SemesterComponent } from './components/semester/semester.component';
 import { TimeTableComponent } from './components/time-table/time-table.component';
 import { AuthGuard } from './guard/auth.guard';
 import { SignedInGuard } from './guard/signed-in.guard';
@@ -42,6 +43,7 @@ const routes: Routes = [
     {path:'seating', component: SeatingComponent},
     {path:'logs', component: LogsComponent},
     {path:'emailing', component: EmailingComponent},
+    {path:'semester', component: SemesterComponent},
     {path:'generate', component: GenerateComponent},
 
   ] },

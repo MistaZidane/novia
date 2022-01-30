@@ -20,9 +20,7 @@ export class DataService {
   public deleteCourse(id:string){
     return this.http.delete(`http://localhost:8000/courses/${id}`);
   }
-  public getDepartments(){
-    return this.http.get('http://localhost:8000/department');
-}
+
 
 public getTimeTable(){
   return this.http.get('http://localhost:8000/table');
@@ -40,8 +38,10 @@ public deleteCampus(id:string){
   return this.http.delete(`http://localhost:8000/campus/${id}`);
 }
 
-public editCampus(data:any, id:string){
-  return this.http.patch(`http://localhost:8000/campus/${id}`, {data});
+public editCampusName(data:any, id:string){
+  console.log(data,"data");
+  
+  return this.http.patch(`http://localhost:8000/campus/${id}`, {name:data});
 }
 public addClassToCampus(data:any){
   return this.http.post(`http://localhost:8000/classes`, data);
@@ -52,6 +52,37 @@ public getClassesByCampusId(id:string){
 }
 public deleteClass(id:string){
   return this.http.delete(`http://localhost:8000/classes/${id}`);
+}
+public getLecturers(){
+  return this.http.get('http://localhost:8000/lecturer');
+}
+
+public deleteLecturer(id:string){
+  return this.http.delete(`http://localhost:8000/lecturer/${id}`);
+}
+
+public createLecturer(data:any){
+  
+  return this.http.post("http://localhost:8000/lecturer", data);
+}
+public getDepartments(){
+  return this.http.get('http://localhost:8000/department');
+}
+public deleteDepartment(id:string){
+  return this.http.delete(`http://localhost:8000/department/${id}`);
+}
+
+public getSemester(){
+  return this.http.get('http://localhost:8000/semester');
+}
+
+public deleteSemester(id:string){
+  return this.http.delete(`http://localhost:8000/semester/${id}`);
+}
+
+public createSemester(data:any){
+  
+  return this.http.post("http://localhost:8000/semester", data);
 }
 
 }
