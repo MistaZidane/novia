@@ -1,1 +1,54 @@
-<p>edit-departments works!</p>
+<div class="section">
+    <div class=" category">
+        <div>
+            <div class="parent-con">
+                <div class="title border">
+                    <p>Edit a Department</p>
+                    <!-- <a [routerLink]="['/departments/add-department']" class="btn btn-green" style="align-self: end;">Add Department <i class="fa fa-plus"></i></a> -->
+                </div>
+                <form class="" (ngSubmit)="updateDepartment()" *ngIf="showData">
+                    <div class="form-section">
+                        <div class="form-field">
+                            <label for="">Department Name</label>
+                            <input type="text" name="name" [value]="department.name"  [(ngModel)]="newDepartmentInfo.name" placeholder="SWE2" >
+                        </div>
+
+                        <div class="form-field">
+                            <label for="">Department Size</label>
+                            <input type="number" name="size" [(ngModel)]="newDepartmentInfo.size" placeholder="50" >
+                        </div>
+                        <!-- <div class="form-field" *ngIf="!hasCampuses">
+                        <p  style="color: lightcoral;">No Campus Created <a [routerLink]="['/campus']" style="color: indigo; text-decoration: underline;">Click to create a campus</a></p>
+                    </div> -->
+                        <div class="form-field">
+                            <label for="">Department Campus: <span style="color: indigo;">{{department.campus.name}}</span></label>
+                            <select name="campus" id="" [(ngModel)]="newDepartmentInfo.campus">
+                                <option *ngFor="let item of campuses" [value]="item._id" >{{item.name}}</option>
+                               
+                            </select>
+                           
+                          
+                        </div>
+                        <div class="form-field">
+                            <label for="">Session <span style="color: indigo;">{{department.session}}</span></label>
+                            <select name="session" id="" [(ngModel)]="newDepartmentInfo.session">
+                                <option value="Night">Night</option>
+                                <option value="Day">Day</option>
+                            </select>
+                           
+                        </div>
+                      
+                      
+                        <div class="btn-flex">
+                            <button  class="btn btn-green" >Save</button>
+                           
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+           
+        </div>
+    </div>
+</div>

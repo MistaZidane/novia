@@ -18,6 +18,7 @@
                                         <th class="name">Size</th>
                                         <th class="name">Night</th>
                                         <th class="name">Campus</th>
+                                        <th class="name">Courses</th>
                                         <th class="action">Actions</th>
                                        
                                     </tr>
@@ -26,13 +27,14 @@
                                     <tr *ngFor="let item of data">
                                     
                                         <td class="flex-strat">{{item.name}}</td>
-                                        <td class="flex-strat">l{{item.size}}</td>
-                                        <td class="flex-strat">{{item.nigth}}</td>
-                                        <td class="flex-strat">{{item.campus}}</td>
+                                        <td class="flex-strat">{{item.size}}</td>
+                                        <td class="flex-strat">{{item.session}}</td>
+                                        <td class="flex-strat">{{item.campus.name}}</td>
+                                        <td class="flex-start"><a [routerLink]="['courses',item._id]" style="color: indigo; text-decoration: underline;">Courses</a></td>
 
                                         <td class="flex-center">
                                             <div class="action">
-                                                <a [routerLink]="['/departments/edit-department']" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a [routerLink]="['edit-department',item._id]" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                 <a (click)="showDeleteBtn(item._id)" *ngIf="!item.showDelete" class="patial-delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                 <a (click)="deleteDepartment(item._id)" *ngIf="item.showDelete"  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </div>

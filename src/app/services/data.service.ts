@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/internal/operators/map';
+// import { map } from 'rxjs/internal/operators/map';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,8 @@ export class DataService {
        return this.http.get('http://localhost:8000/courses');
   }
 
-  public createCourse(title:string, description: string){
-    return this.http.post("http://localhost:8000/courses", {title,description});
+  public createCourse(data:any){
+    return this.http.post("http://localhost:8000/courses", data);
   }
 
   public deleteCourse(id:string){
@@ -84,5 +84,27 @@ public createSemester(data:any){
   
   return this.http.post("http://localhost:8000/semester", data);
 }
+public createSDepartment(data:any){
+  
+  return this.http.post("http://localhost:8000/department", data);
+}
+public getDepartmentById(id:string){
+  return this.http.get(`http://localhost:8000/department/${id}`);
+}
 
+
+public updateDepartment(id:string, data:any){
+  return this.http.patch(`http://localhost:8000/department/${id}`, data);
+}
+public getCoursesByDepartment(id:string){
+  return this.http.get(`http://localhost:8000/courses-by-depart/${id}`);
+}
+
+public getCoursesInDepartmentById(id:string){
+  return this.http.get(`http://localhost:8000/course-in-department/${id}`, {params:{departId:id}});
+}
+public createCourseInDepartment(data:any){
+  
+  return this.http.post("http://localhost:8000/course-in-department", data);
+}
 }

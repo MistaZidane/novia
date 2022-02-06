@@ -9,11 +9,20 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CoursesComponent implements OnInit {
 public data:any;
+public lecturers:any = [];
+public hasLecturers:any = false;
+public selectedLecturers: any = [];
+public lecturerSelected = false;
 public departmentList:any;
+public hasDepartments = false;
 public loaded = false;
 public hasCourses = false;
+public generalCourse = false;
+public selectedDepartments:any = [];
+public departmentSelected = false;
 public title: string = "";
 public description: string = "";
+
 
   constructor(public dataService: DataService, private toastr: ToastrService) { }
 
@@ -22,6 +31,8 @@ public description: string = "";
 
       if(ob.success){
              this.data = ob.docs;
+             console.log(ob.docs);
+             
              if(this.data.length >0){
                   this.hasCourses = true;
             }
@@ -40,12 +51,27 @@ public description: string = "";
     this.dataService.getDepartments().subscribe((ob:any)=>{
       if(ob.success){
         this.departmentList = ob.docs;
+        this.hasDepartments = true;
       }
       console.log(ob);
       
 
     
     });
+
+    
+    this.dataService.getLecturers().subscribe((ob:any)=>{
+      if(ob.success){
+        this.lecturers = ob.docs;
+        this.hasLecturers = true;
+      }
+      console.log(ob);
+      
+
+    
+    });
+
+    
   }
 
   getData(){
@@ -56,7 +82,24 @@ public description: string = "";
   }
 
   createCourse(){
-    this.dataService.createCourse(this.title,this.description).subscribe((ob: any)=>{
+    console.log(this.selectedDepartments);
+    let finalDerpartments:any = [];
+    let finalLecturers:any = [];
+    this.selectedDepartments.forEach((el:any) => {
+    finalDerpartments.push(el.id);
+    });
+    this.selectedLecturers.forEach((el:any) => {
+      finalLecturers.push(el.id);
+      });
+
+  let newData = {
+    title:this.title,
+    description:this.description,
+    general:this.generalCourse,
+    departments: finalDerpartments,
+    lecturers: finalLecturers
+  }
+    this.dataService.createCourse(newData).subscribe((ob: any)=>{
       console.log(ob);
 
       if(ob.success == true){
@@ -105,6 +148,62 @@ public description: string = "";
       }
      
     })
+  }
+  checkDepartment(event:any, id:string){
+
+    let index = this.selectedDepartments.findIndex((ele:any)=>{
+      return ele.id == id
+    });
+    console.log(index);
+    if(index == -1){
+      if(event.target.checked  == true){
+        this.selectedDepartments.push({id,checked:event.target.checked  })
+      }
+       
+    }
+    else{
+      if(event.target.checked  == false){
+        this.selectedDepartments.splice(index,1)
+      }
+    }
+
+   if(this.selectedDepartments.length >0){
+     this.departmentSelected = true;
+   }
+   else{
+     this.departmentSelected = false;
+   }
+    console.log(this.selectedDepartments);
+
+  }
+  checkLecturer(event:any, id:string){
+    let index = this.selectedLecturers.findIndex((ele:any)=>{
+      return ele.id == id
+    });
+    console.log(index);
+    if(index == -1){
+      if(event.target.checked  == true){
+        this.selectedLecturers.push({id,checked:event.target.checked  })
+      }
+       
+    }
+    else{
+      if(event.target.checked  == false){
+        this.selectedLecturers.splice(index,1)
+      }
+    }
+
+   if(this.selectedLecturers.length >0){
+     this.lecturerSelected = true;
+   }
+   else{
+     this.lecturerSelected = false;
+   }
+    console.log(this.selectedLecturers);
+  }
+  selectGeneral(event:any){
+    this.generalCourse = event.target.checked;
+
   }
   // deleteCourse(id:string){
 

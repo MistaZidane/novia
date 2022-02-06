@@ -1,0 +1,91 @@
+
+   <div class="section">
+    <div class=" category">
+        <div>
+            <div class="parent-con">
+                <div class="title border">
+                    <p>All Courses in SWE2</p>
+                    <button  class="btn btn-green" style="align-self: end;">Save <i class="fa fa-save"></i></button>
+                </div>
+               
+                <div class="table-con">
+                     <p *ngIf="!hasCourses">No course created or course assigned to SWE2</p>
+                    <table *ngIf="hasCourses">
+                        <thead>
+                            <tr>
+                            
+                                <th class="name">Course Name</th>
+                                <th class="name">Lecturer</th>
+                                <th class="name">semester</th>
+                                <th class="name">Total Hours</th>
+                                <th class="name">Needs Lab</th>
+                                <th class="name">Day</th>
+                                <th class="name">period</th>
+                                <th class="action">Actions</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr *ngFor="let item of courses">
+                            
+                                <td class="flex-strat">{{item.title}}</td>
+                                <td class="flex-strat">   <select name="" id="">
+                                    <option value="" *ngFor="let lecturer of item.lecturers">{{lecturer.name}}</option>
+                                </select></td>
+                                <td class="flex-strat">
+                                    <select name="semester" id="">
+                                        <option *ngFor="let item of semesters" value="">{{item.name}}</option>
+                                    </select>
+                                
+                                </td>
+                                <td class="flex-strat">
+                                    
+                                    <input style="border: 1px solid grey !important; padding: 10px 10px; " type="number" value="30">
+                                </td>
+                                <td class="flex-strat">   <select name="session" id="">
+                                    <option value="">True</option>
+                                    <option value="">False</option>
+                                </select></td>
+                                <td class="flex-strat"> 
+                                    <select name="day" id="">
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                    </select></td>
+                                    <td class="flex-strat">   
+                                        <select name="period" id="">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="1,2">1 & 2</option>
+                                        <option value="3,4">3 & 4</option>
+                                        <option value="1,2,3,4">1,2,3 & 4</option>
+                                    </select></td>
+
+                                <td class="flex-center">
+                                    <div class="action">
+                                       
+                                        
+                                        <a  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <!-- <button  style="color: white; background-color: indigo; border-radius: 5px; padding: 5px 5px; font-size: 20px;" class=" btn-green" ><i class="fa fa-save"></i></button> -->
+                                    </div>
+                                </td>
+                            </tr>
+                                                     
+            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div>
+           
+        </div>
+    </div>
+</div>
+
+      

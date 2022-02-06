@@ -78,12 +78,70 @@
                                     <label for="">Course title</label>
                                     <input type="text" name="title" id="" placeholder="Course A" [(ngModel)]="title">
                                 </div>
+                                
+                                <label for="">Departments</label>
+                                <div class="form-field " style="height: 100%; width: 100%;">
+                                    <p *ngIf="!hasDepartments" style="color: indianred;">No Department Created yet. A course must be assigned to aleast one department or general. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
+                                      <div class=" " *ngIf="hasDepartments">
+                                          <div class="login-remember" >
+                                              <div class="default-check">
+                                                  <input type="checkbox" (change)="selectGeneral($event)" name="general" id="general">
+                                                  <span>
+                                                      <label >Genaral</label>
+                                                  </span>
+                                              </div>
+                                          </div>
+                                         
+                                          
+                                      </div>
+  
+                                     
+                                    
+                                  </div>
+                                <div class="form-field " style="height: 100%; width: 100%;" *ngIf="!generalCourse">
+                                    <p *ngIf="!hasDepartments" style="color: indianred;">No Department Created yet. A course must be assigned to aleast one department or general. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
+                                      <div class=" seletedCourses" *ngIf="hasDepartments">
+                                          <div class="login-remember" *ngFor="let item of departmentList">
+                                              <div class="default-check">
+                                                  <input type="checkbox" (change)="checkDepartment($event,item._id)" [name]="item.title" id="english">
+                                                  <span>
+                                                      <label [for]="item.title">{{item.name}}</label>
+                                                  </span>
+                                              </div>
+                                          </div>
+                                         
+                                          
+                                      </div>
+  
+                                     
+                                    
+                                  </div>
+                                  <label for="">Lecturer</label>
+                                  <div class="form-field " style="height: 100%; width: 100%;" *ngIf="hasLecturers">
+                                    <p *ngIf="!hasLecturers" style="color: indianred;">No Lecturer Created yet. A course must be assigned to aleast one lecturer. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
+                                      <div class=" seletedCourses" *ngIf="hasLecturers">
+                                          <div class="login-remember" *ngFor="let item of lecturers">
+                                              <div class="default-check">
+                                                  <input type="checkbox" (change)="checkLecturer($event,item._id)" [name]="item.title" id="english">
+                                                  <span>
+                                                      <label [for]="item.title">{{item.name}}</label>
+                                                  </span>
+                                              </div>
+                                          </div>
+                                         
+                                          
+                                      </div>
+  
+                                     
+                                    
+                                  </div>
                                 <div class="form-field">
                                     <label for="">Description</label>
                                     <textarea type="text" name="description" [(ngModel)]="description"></textarea>
                                 </div>
                                 <div class="btn-flex">
-                                    <button class="btn btn-green" (click)="getData()">Add New</button>
+                                    <p *ngIf="!departmentSelected && !generalCourse" style="color: lightcoral;">Select one or more Departments. You can select the general option</p>
+                                    <button class="btn btn-green" *ngIf="(departmentSelected || generalCourse) && lecturerSelected" >Add New</button>
                                    
                                 </div>
                             </div>

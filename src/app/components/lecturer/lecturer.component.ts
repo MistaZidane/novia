@@ -97,8 +97,8 @@ public selectedCourses:any = [];
     
     this.dataService.deleteLecturer(id).subscribe((ob:any)=>{
       if(ob.success){
-        if(this.lecturers.length !> 0){
-          this.hasLecturers = false;
+        if(this.lecturers.length > 0){
+          this.hasLecturers = true;
         }
        
     this.lecturers = this.lecturers.filter((element:any)=>{

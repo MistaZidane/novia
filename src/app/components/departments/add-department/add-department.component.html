@@ -6,23 +6,23 @@
                     <p>Add a Department</p>
                     <!-- <a [routerLink]="['/departments/add-department']" class="btn btn-green" style="align-self: end;">Add Department <i class="fa fa-plus"></i></a> -->
                 </div>
-                <form class="" >
+                <form class="" (ngSubmit)="createDepartment()">
                     <div class="form-section">
                         <div class="form-field">
                             <label for="">Department Name</label>
-                            <input type="text" name="name" id="" placeholder="SWE2" >
+                            <input type="text" name="name"  [(ngModel)]="newDepartment.name" placeholder="SWE2" >
                         </div>
 
                         <div class="form-field">
                             <label for="">Department Size</label>
-                            <input type="number" name="size" id="" placeholder="50" >
+                            <input type="number" name="size" [(ngModel)]="newDepartment.size" placeholder="50" >
                         </div>
                         <div class="form-field" *ngIf="!hasCampuses">
                         <p  style="color: lightcoral;">No Campus Created <a [routerLink]="['/campus']" style="color: indigo; text-decoration: underline;">Click to create a campus</a></p>
                     </div>
                         <div class="form-field" *ngIf="hasCampuses">
                             <label for="">Department Campus</label>
-                            <select name="" id="">
+                            <select name="campus" id="" [(ngModel)]="newDepartment.campus">
                                 <option *ngFor="let item of campuses" [value]="item._id" >{{item.name}}</option>
                                
                             </select>
@@ -30,22 +30,22 @@
                         </div>
                         <div class="form-field">
                             <label for="">Session</label>
-                            <select name="" id="">
+                            <select name="session" id="" [(ngModel)]="newDepartment.session">
                                 <option value="Night">Night</option>
                                 <option value="Day">Day</option>
                             </select>
                         </div>
-                        <div class="form-field" *ngIf="!hasSemesters">
-                            <p  style="color: lightcoral;">No Semester Created <a [routerLink]="['/semester']" style="color: indigo; text-decoration: underline;">Click to create a semester</a></p>
+                        <!-- <div class="form-field" *ngIf="!hasSemesters">
+                            <p  style="color: lightcoral;">No Semester created <a [routerLink]="['/semester']" style="color: indigo; text-decoration: underline;">Click to create a semester</a></p>
                         </div>
                         <div class="form-field" *ngIf="hasSemesters">
-                            <label for="">Department Campus</label>
+                            <label for="">Semester</label>
                             <select name="" id="">
                                 <option *ngFor="let item of semesters" [value]="item._id" >{{item.name}}</option>
                                
                             </select>
                           
-                        </div>
+                        </div> -->
                       
                         <div class="btn-flex">
                             <button *ngIf="hasCampuses" class="btn btn-green" >Add New</button>

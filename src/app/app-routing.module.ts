@@ -5,6 +5,7 @@ import { EditCampusesComponent } from './components/campus/edit-campuses/edit-ca
 import { ViewCampusesComponent } from './components/campus/view-campuses/view-campuses.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { AddDepartmentComponent } from './components/departments/add-department/add-department.component';
+import { DepartmentCourseComponent } from './components/departments/department-course/department-course.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { EditDepartmentsComponent } from './components/departments/edit-departments/edit-departments.component';
 import { ViewDepartmentsComponent } from './components/departments/view-departments/view-departments.component';
@@ -36,7 +37,8 @@ const routes: Routes = [
     {path:'departments', component: DepartmentsComponent, children:[
       {path:'', component: ViewDepartmentsComponent},
       {path:'view-departments', component: ViewDepartmentsComponent},
-      {path:'edit-department', component: EditDepartmentsComponent},
+      {path:'edit-department/:id', component: EditDepartmentsComponent},
+      {path:'courses/:id', component:DepartmentCourseComponent },
       {path:'add-department', component:AddDepartmentComponent }
     ] },
     {path:'time-table', component: TimeTableComponent},
