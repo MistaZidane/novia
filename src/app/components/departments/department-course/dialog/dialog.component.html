@@ -1,0 +1,107 @@
+<h2 mat-dialog-title>Edit Course</h2>
+<mat-dialog-content class="mat-typography">
+  
+    <div style="width: 500px;">
+        <div class="title border">
+        
+        </div>
+        <form class="" >
+            <div class="form-section" style="width: 100%;">
+               
+                <div class="form-field">
+                    <label for="">Number of Hours</label>
+                    <input type="number" name="totHours" id="" placeholder="30" [value]="activeData.totHours">
+                </div>
+                <div class="form-field">
+                    <label for="">Lecturer</label>
+                    <select name="lecturer" id="" #lecturer (change)="selectLecturer(activeData._id,lecturer.value)">
+                        <ng-template  [ngIf]= "activeData.lecturer != ''" [ngIfElse]= "lec">
+                            <option [value]="activeData.lecturer"  selected="true">{{activeData.lectuterName }}</option>
+                             <option *ngFor="let lecturer of lecturers"  [value]="lecturer._id">{{lecturer.name}}</option>
+                       </ng-template>
+                     <ng-template #lec>
+                     
+                             <option *ngFor="let lecturer of lecturers"  [value]="lecturer._id">{{lecturer.name}}</option>
+                     </ng-template>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="">Semester</label>
+                   
+                    <select name="Semester" id="" #semester (change)="selectSemester(activeData._id,semester.value)">
+                        <ng-template  [ngIf]= "activeData.semester != ''" [ngIfElse]= "semes">
+                            <option [value]="activeData.semester"  selected="true">{{activeData.semester }}</option>
+                             <option *ngFor="let semester of semesters"  [value]="semester._id">{{semester.name}}</option>
+                       </ng-template>
+                     <ng-template #semes>
+                     
+                             <option *ngFor="let semester of semesters"  [value]="semester._id">{{semester.name}}</option>
+                     </ng-template>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="">Day</label>
+                    <select name="day" id="" #day (change)="selectDay(activeData._id,day.value)">
+                        <ng-template  [ngIf]= "activeData.day != ''" [ngIfElse]= "days">
+                            <option [value]="activeData.day"  selected="true">{{activeData.day }}</option>
+                            <option value="Monday">MONDAY</option>
+                        <option value="Tuesday">TUESDAY</option>
+                        <option value="Wednesday">WEDNESDAY</option>
+                        <option value="Thursday">THURSDAY</option>
+                        <option value="Friday">FRIDAY</option>
+                        <option value="Saturday">SATURDAY</option>
+                       </ng-template>
+                     <ng-template #days>
+                     
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                     </ng-template>
+                      
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="">Period</label>
+                    <select name="period" id=""#period (change)="selectPeriod(activeData._id,period.value)" >
+                        <ng-template  [ngIf]= "activeData.period != ''" [ngIfElse]= "per">
+                            <option [value]="activeData.period"  selected="true">{{activeData.period }}</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="1,2">1 & 2</option>
+                            <option value="3,4">3 & 4</option>
+                            <option value="1,2,3,4">1,2,3 & 4</option>
+                       </ng-template>
+                     <ng-template #per>
+                     
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="1,2">1 & 2</option>
+                        <option value="3,4">3 & 4</option>
+                        <option value="1,2,3,4">1,2,3 & 4</option>
+                     </ng-template>
+                        
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="">Needs Lab</label>
+                    <select name="needsLab" id="" #lab (change)="selectNeedsLab(activeData._id,lab.value)">
+                        <option [value]="activeData.needsLab"  selected="true">{{activeData.needsLab}}</option>
+                             <option [value]="!activeData.needsLab">{{!activeData.needsLab}}</option>
+                    </select>
+                </div>
+              
+            </div>
+        </form>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-cancel" mat-dialog-close>Cancel</button>
+  <button class="btn btn-green" >Save</button>
+</mat-dialog-actions>

@@ -91,7 +91,11 @@ public description: string = "";
     this.selectedLecturers.forEach((el:any) => {
       finalLecturers.push(el.id);
       });
-
+if(this.generalCourse){
+  this.departmentList.forEach((element:any) => {
+    finalDerpartments.push(element._id)
+  });
+}
   let newData = {
     title:this.title,
     description:this.description,

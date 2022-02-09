@@ -35,6 +35,8 @@ import { ViewCampusesComponent } from './components/campus/view-campuses/view-ca
 import { EditCampusesComponent } from './components/campus/edit-campuses/edit-campuses.component';
 import { SemesterComponent } from './components/semester/semester.component';
 import { DepartmentCourseComponent } from './components/departments/department-course/department-course.component';
+import { DialogComponent } from './components/departments/department-course/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -68,6 +70,7 @@ export function tokenGetter() {
     EditCampusesComponent,
     SemesterComponent,
     DepartmentCourseComponent,
+    DialogComponent,
 
     
   ],
@@ -76,6 +79,7 @@ export function tokenGetter() {
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

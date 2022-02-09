@@ -1,11 +1,12 @@
 
    <div class="section">
     <div class=" category">
+
         <div>
             <div class="parent-con">
                 <div class="title border">
                     <p>All Courses in SWE2</p>
-                    <button  class="btn btn-green" style="align-self: end;">Save <i class="fa fa-save"></i></button>
+                    <!-- <button  class="btn btn-green" style="align-self: end;"(click)="openDialog()" >Save <i class="fa fa-save"></i></button> -->
                 </div>
                
                 <div class="table-con">
@@ -15,48 +16,111 @@
                             <tr>
                             
                                 <th class="name">Course Name</th>
-                                <th class="name">Lecturer</th>
-                                <th class="name">semester</th>
-                                <th class="name">Total Hours</th>
+                                <th class="name">General</th>
+                                <th class="name">Course Description</th>
+                                <!-- <th class="name">Total Hours</th>
                                 <th class="name">Needs Lab</th>
                                 <th class="name">Day</th>
-                                <th class="name">period</th>
+                                <th class="name">period</th> -->
                                 <th class="action">Actions</th>
                                
                             </tr>
                         </thead>
                         <tbody >
-                            <tr *ngFor="let item of courses">
+                            <tr *ngFor="let item of courses; index as i">
+                                <td class="flex-start">{{item.course.title}}</td>
+                                <td class="flex-start">{{item.course.general}}</td>
+                                <td class="flex-start">{{item.course.description}}</td>
+                                <td class="flex-start">
+                                    <div class="action">
+                                       
+                                        
+                                        <a  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <a class="edit" (click)="openDialog(item._id)"> <i class="fa fa-edit" aria-hidden="true" > </i></a>
+                                        <!-- <button (click)="saveData(item._id)" class="save-btn btn-green" ><i class="fa fa-edit"></i></button> -->
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- <tr *ngFor="let item of courses">
                             
-                                <td class="flex-strat">{{item.title}}</td>
-                                <td class="flex-strat">   <select name="" id="">
-                                    <option value="" *ngFor="let lecturer of item.lecturers">{{lecturer.name}}</option>
-                                </select></td>
+                                <td class="flex-strat">{{item.course.title}}</td>
+                                <td class="flex-strat">   
+                                  
+                                <select name="lecturer" id="" #lecturer (change)="selectLecturer(item._id,lecturer.value)">
+                                    <ng-template  [ngIf]= "item.lecturer" [ngIfElse]= "lect">
+                                        <option [value]="item.lecturer"  selected="true">Choosen</option>
+                                         <option *ngFor="let lecturer of item.course.lecturers"  [value]="lecturer._id">{{lecturer.name}}</option>
+                                   </ng-template>
+                                 <ng-template #lect>
+                                    <option *ngFor="let lecturer of item.course.lecturers"  [value]="lecturer._id">{{lecturer.name}}</option>
+                                 </ng-template>
+                                </select>
+                            </td>
                                 <td class="flex-strat">
-                                    <select name="semester" id="">
-                                        <option *ngFor="let item of semesters" value="">{{item.name}}</option>
+                                    <select name="semester" >
+                                       
+                                        <ng-template  [ngIf]= "item.semester" [ngIfElse]= "semes">
+                                             <option [value]="item.semester"  selected="true">Choosen</option>
+                                              <option *ngFor="let semester of semesters"  [value]="semester._id">{{semester.name}}</option>
+                                        </ng-template>
+                                      <ng-template #semes>
+                                      
+                                              <option *ngFor="let semester of semesters"  [value]="semester._id">{{semester.name}}</option>
+                                      </ng-template>
                                     </select>
                                 
                                 </td>
                                 <td class="flex-strat">
                                     
-                                    <input style="border: 1px solid grey !important; padding: 10px 10px; " type="number" value="30">
+                                    <input style="border: 1px solid grey !important; padding: 10px 10px; " type="number" [value]="item.totHours">
                                 </td>
-                                <td class="flex-strat">   <select name="session" id="">
-                                    <option value="">True</option>
-                                    <option value="">False</option>
-                                </select></td>
                                 <td class="flex-strat"> 
-                                    <select name="day" id="">
+                                     
+                                <select name="needsLab" id="">
+                                  
+                                 <option [value]="item.needsLab"  selected="true">{{item.needsLab}}</option>
+                                 <option [value]="!item.needsLab">{{!item.needsLab}}</option>
+                                </select>
+                            </td>
+                                <td class="flex-strat"> 
+                                    <select name="" id="">
+                                    <ng-template  [ngIf]= "item.day" [ngIfElse]= "day">
+                                        <option [value]="item.day"  selected="true">Choosen</option>
                                         <option value="Monday">Monday</option>
                                         <option value="Tuesday">Tuesday</option>
                                         <option value="Wednesday">Wednesday</option>
                                         <option value="Thursday">Thursday</option>
                                         <option value="Friday">Friday</option>
                                         <option value="Saturday">Saturday</option>
-                                    </select></td>
+                                   </ng-template>
+                                 <ng-template #day>
+                                 
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                 </ng-template>
+                                  
+                                </select>
+                                
+                                </td>
                                     <td class="flex-strat">   
-                                        <select name="period" id="">
+                                       
+                                    <select name="" id="">
+                                        <ng-template  [ngIf]= "item.day" [ngIfElse]= "per">
+                                            <option [value]="item.day"  selected="true">Choosen</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="1,2">1 & 2</option>
+                                            <option value="3,4">3 & 4</option>
+                                            <option value="1,2,3,4">1,2,3 & 4</option>
+                                       </ng-template>
+                                     <ng-template #per>
+                                     
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -64,27 +128,134 @@
                                         <option value="1,2">1 & 2</option>
                                         <option value="3,4">3 & 4</option>
                                         <option value="1,2,3,4">1,2,3 & 4</option>
-                                    </select></td>
+                                     </ng-template>
+                                      
+                                    </select>
+                                </td>
 
                                 <td class="flex-center">
                                     <div class="action">
                                        
                                         
                                         <a  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                        <!-- <button  style="color: white; background-color: indigo; border-radius: 5px; padding: 5px 5px; font-size: 20px;" class=" btn-green" ><i class="fa fa-save"></i></button> -->
+                                        <button (click)="saveData(item._id)" class="save-btn btn-green" ><i class="fa fa-save"></i></button>
                                     </div>
                                 </td>
                             </tr>
-                                                     
+                                                      -->
             
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div>
-           
-        </div>
+        
+
+
+
+
+        <!-- <div class="create-category parent-con">
+            <div class="title border">
+                <p>Edit</p>
+            </div>
+            <form class="" >
+                <div class="form-section">
+                   
+                    <div class="form-field">
+                        <label for="">Number of Hours</label>
+                        <input type="number" name="totHours" id="" placeholder="30" [value]="activeData.totHours">
+                    </div>
+                    <div class="form-field">
+                        <label for="">Lecturer</label>
+                        <select name="lecturer" id="" #lecturer (change)="selectLecturer(activeData._id,lecturer.value)">
+                            <ng-template  [ngIf]= "activeData.lecturer != ''" [ngIfElse]= "lec">
+                                <option [value]="activeData.lecturer"  selected="true">{{activeData.lectuterName }}</option>
+                                 <option *ngFor="let lecturer of lecturers"  [value]="lecturer._id">{{lecturer.name}}</option>
+                           </ng-template>
+                         <ng-template #lec>
+                         
+                                 <option *ngFor="let lecturer of lecturers"  [value]="lecturer._id">{{lecturer.name}}</option>
+                         </ng-template>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="">Semester</label>
+                       
+                        <select name="Semester" id="" #semester (change)="selectSemester(activeData._id,semester.value)">
+                            <ng-template  [ngIf]= "activeData.semester != ''" [ngIfElse]= "semes">
+                                <option [value]="activeData.semester"  selected="true">{{activeData.semester }}</option>
+                                 <option *ngFor="let semester of semesters"  [value]="semester._id">{{semester.name}}</option>
+                           </ng-template>
+                         <ng-template #semes>
+                         
+                                 <option *ngFor="let semester of semesters"  [value]="semester._id">{{semester.name}}</option>
+                         </ng-template>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="">Day</label>
+                        <select name="day" id="" #day (change)="selectDay(activeData._id,day.value)">
+                            <ng-template  [ngIf]= "activeData.day != ''" [ngIfElse]= "days">
+                                <option [value]="activeData.day"  selected="true">{{activeData.day }}</option>
+                                <option value="Monday">MONDAY</option>
+                            <option value="Tuesday">TUESDAY</option>
+                            <option value="Wednesday">WEDNESDAY</option>
+                            <option value="Thursday">THURSDAY</option>
+                            <option value="Friday">FRIDAY</option>
+                            <option value="Saturday">SATURDAY</option>
+                           </ng-template>
+                         <ng-template #days>
+                         
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                         </ng-template>
+                          
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="">Period</label>
+                        <select name="period" id=""#period (change)="selectPeriod(activeData._id,period.value)" >
+                            <ng-template  [ngIf]= "activeData.period != ''" [ngIfElse]= "per">
+                                <option [value]="activeData.period"  selected="true">{{activeData.period }}</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="1,2">1 & 2</option>
+                                <option value="3,4">3 & 4</option>
+                                <option value="1,2,3,4">1,2,3 & 4</option>
+                           </ng-template>
+                         <ng-template #per>
+                         
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="1,2">1 & 2</option>
+                            <option value="3,4">3 & 4</option>
+                            <option value="1,2,3,4">1,2,3 & 4</option>
+                         </ng-template>
+                            
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="">Needs Lab</label>
+                        <select name="needsLab" id="" #lab (change)="selectNeedsLab(activeData._id,lab.value)">
+                            <option [value]="activeData.needsLab"  selected="true">{{activeData.needsLab}}</option>
+                                 <option [value]="!activeData.needsLab">{{!activeData.needsLab}}</option>
+                        </select>
+                    </div>
+                    <div class="btn-flex">
+                        <button type="submit" class="btn btn-green">Save</button>
+                      
+                    </div>
+                </div>
+            </form>
+        </div> -->
     </div>
 </div>
 

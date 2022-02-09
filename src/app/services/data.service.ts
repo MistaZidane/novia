@@ -101,7 +101,10 @@ public getCoursesByDepartment(id:string){
 }
 
 public getCoursesInDepartmentById(id:string){
-  return this.http.get(`http://localhost:8000/course-in-department/${id}`, {params:{departId:id}});
+  return this.http.get(`http://localhost:8000/course-in-department`, {params:{department:id}});
+}
+public getOneCourseInDepartmentById(id:string){
+  return this.http.get(`http://localhost:8000/course-in-department/${id}`,);
 }
 public createCourseInDepartment(data:any){
   

@@ -1,0 +1,9 @@
+.btn-cancel{
+background-color: rgb(206, 66, 66);
+color: white;
+margin-right: 5px !important;
+}
+
+.btn-cancel:hover{
+    background-color:  rgb(131, 43, 43);
+}

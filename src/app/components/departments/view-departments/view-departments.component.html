@@ -34,7 +34,7 @@
 
                                         <td class="flex-center">
                                             <div class="action">
-                                                <a [routerLink]="['edit-department',item._id]" class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                <a [routerLink]="['edit-department',item._id]" class="edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                                 <a (click)="showDeleteBtn(item._id)" *ngIf="!item.showDelete" class="patial-delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                                 <a (click)="deleteDepartment(item._id)" *ngIf="item.showDelete"  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </div>
