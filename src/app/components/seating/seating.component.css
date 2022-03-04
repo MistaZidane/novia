@@ -12,3 +12,7 @@ th, td, table{
     border: solid 1px var(--border-color); 
     border-collapse: collapse; 
 }
+
+.options{
+    display: flex;
+}

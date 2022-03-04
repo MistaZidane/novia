@@ -2132,3 +2132,8 @@ form .flex .login-remember img {
 @media screen and (max-width: 767px) {}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.table-con{
+    overflow-x: scroll !important;
+}

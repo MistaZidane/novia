@@ -15,24 +15,34 @@ export class ViewCampusesComponent implements OnInit {
     constructor(private dataService: DataService, private toast: ToastrService) { }
   
     ngOnInit(): void {
+  this.getData();
   
-      this.dataService.getCampuses().subscribe((ob:any)=>{
-        if(ob.success){
-          console.log(ob.docs);
-          this.data = ob.docs;
-          this.data.forEach((element:any) => {
-            element.showDelete = false;
-          });
-          this.dataLoaded = true;
-          
-        }
-      })
     }
-
+getData(){
+  this.dataService.getCampuses().subscribe((ob:any)=>{
+    if(ob.success){
+      console.log(ob.docs);
+      this.data = ob.docs;
+      this.data.forEach((element:any) => {
+        element.showDelete = false;
+      });
+      if(this.data.length <1){
+        this.dataLoaded = false;
+      }
+      else{
+          this.dataLoaded = true;
+      }
+    
+      
+    }
+  })
+}
     addCampus(){
       this.dataService.createCampus(this.title).subscribe((ob:any)=>{
         if(ob.success){
           this.toast.success("Added Campus Succesfully", "Success");
+          this.dataLoaded = true;
+          this.getData();
           console.log(ob);
           
           this.data.push(ob.docs)
@@ -60,6 +70,9 @@ export class ViewCampusesComponent implements OnInit {
       this.data = this.data.filter((element:any)=>{
             return element._id != id;
           });
+          if(this.data.length <1){
+            this.dataLoaded = false;
+          }
           this.toast.success("Campus Deleted", "Deleted")
         }
        

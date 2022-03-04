@@ -44,6 +44,9 @@ public selectedCourses:any = [];
           this.hasLecturers = true;
          
         }
+        else{
+          this.hasLecturers = false;
+        }
         this.lecturers.forEach((element:any) => {
           element.showDelete = false;
         });

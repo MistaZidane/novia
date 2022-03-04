@@ -142,6 +142,9 @@ if(this.generalCourse){
         if(this.data.length < 1 ){
           this.hasCourses = false;
         }
+        else{
+          this.hasCourses = true;
+        }
     this.data = this.data.filter((element:any)=>{
           return element._id != id;
         });

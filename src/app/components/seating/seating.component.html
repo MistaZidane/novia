@@ -5,7 +5,7 @@
             <div class="crumb">
                 <a href="index.html" class="crumb-item">Dashboard</a>
                 <span>></span>
-                <a  class="crumb-item">Seating</a>
+                <a  class="crumb-item">Seatings</a>
             </div>
         </div>
 
@@ -14,18 +14,23 @@
         <div class="data-table">
             <div class="top">
                 <div class="span">
-                    <h1>Seating Table</h1>
+                    <h1>Seatings Table</h1>
                 </div>
              
                     <!-- <input type="search" name="" id="" placeholder="Find ..."> -->
-                    <div class="btn-flex " style="padding-right: 10px;">
-                         <select name="department" class=" my-select" style="padding-left: 10px;">
-                        <option value="Swe2">SWE2</option>
-                        <option value="Swe1">SWE1</option>
-                        <option value="MIT2">MIT2</option>
+                    <div class="options">
+                    <div class="btn-flex " style="padding-right: 10px;" *ngIf="showDepartment">
+                         <select name="department" class=" my-select" style="padding-left: 10px;" (change)="selectDepartment($event)">
+                        <option [value]="item._id" selected="true" *ngFor="let item of departments">{{item.name}}</option>
+                        
                     </select>
                     </div>
-                   
+                    <div class="btn-flex " style="padding-right: 10px;" *ngIf="showSemester">
+                        <select name="semester" class=" my-select" style="padding-left: 10px;" (change)="selectSemester($event)">
+                            <option [value]="item._id" selected="true" *ngFor="let item of semesters">{{item.name}}</option>
+                   </select>
+                   </div>
+                </div>
                     <!-- <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button> -->
                
             </div>

@@ -24,7 +24,7 @@
                                         <th class="name">Lecturer Name</th>
                                         <th class="name">Email</th>
                                         <th class="name">Phone</th>
-                                        <th class="name">Courses</th>
+                                        <!-- <th class="name">Courses</th> -->
                                         <th class="action">Actions</th>
                                        
                                     </tr>
@@ -35,9 +35,9 @@
                                         <td class="flex-strat">{{item.name}}</td>
                                         <td class="flex-strat">{{item.email}}</td>
                                         <td class="flex-strat">{{item.phone}}</td>
-                                        <td class="flex-strat"><select name="" id="">
+                                        <!-- <td class="flex-strat"><select name="" id="">
                                             <option *ngFor="let sub of item.courses" [value]="item.title" >{{sub.title}}</option>
-                                        </select></td>
+                                        </select></td> -->
 
                                         <td class="flex-center">
                                             <div class="action">
@@ -76,8 +76,8 @@
                                     <label for="">Phone</label>
                                     <input type="phone" name="phone" placeholder="+237 676983069" [(ngModel)]="newLecturer.phone">
                                 </div>
-                                <label for="">Courses</label>
-                                <div class="form-field " style="height: 100%; width: 100%;">
+                                <!-- <label for="">Courses</label> -->
+                                <!-- <div class="form-field " style="height: 100%; width: 100%;">
                                   <p *ngIf="!hasCourses" style="color: indianred;">No Course Created yet. A Lecturer must be assigned to aleast one course. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
                                     <div class=" seletedCourses" *ngIf="hasCourses">
                                         <div class="login-remember" *ngFor="let item of courses">
@@ -94,10 +94,11 @@
 
                                    
                                   
-                                </div>
+                                </div> -->
                                 <div class="btn-flex">
-                                   <p *ngIf="!courseSelected" style="color: lightcoral;">Select one or more courses</p>
-                                    <button *ngIf="hasCourses && courseSelected" class="btn btn-green">Add New</button>
+                                   <!-- <p *ngIf="!courseSelected" style="color: lightcoral;">Select one or more courses</p> -->
+                                    <!-- <button *ngIf="hasCourses && courseSelected" class="btn btn-green">Add New</button> -->
+                                    <button class="btn btn-green">Add New</button>
                                     <!-- <a class="btn btn-green">Add New</a> -->
                                 </div>
                             </div>

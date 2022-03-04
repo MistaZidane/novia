@@ -30,9 +30,55 @@
             </div>
         </div>
 
-      
+        <div>
+            <div class="create-category parent-con">
+                <div class="title border">
+                    <div class="title">
+                        <span><i class="fa fa-cog" aria-hidden="true"></i>Generate</span>
+                       
+                    </div>
+                    <!-- <p>Add Lecturer</p> -->
+                </div>
+                <form class="" (ngSubmit)="generate()">
+                    <div class="form-section">
+                        
+                        <div class="form-field" *ngIf="showCampus">
+                            <label for="">Campus</label>
+                            <select name="campus"   [(ngModel)]="data.campus">
+                                <option [value]="item._id" *ngFor="let item of campuses" selected="true">{{item.name}}</option>
+                                
+                            </select>
+                        </div>
+                        <div class="form-field" *ngIf="!showCampus">
+                            <label for="">Campus</label>
+                           <p>No Campus Created. Click <a [routerLink]="['/campus']" >here</a> to create a campus. Make sure you Asign a department to a Campus</p>
+                           
+                        </div>
+                        <div class="form-field" *ngIf="showSemester">
+                            <label for="">Semester</label>
+                            <select name="semester"   [(ngModel)]="data.semester">
+                                
+                                <option [value]="item._id" *ngFor="let item of semesters" selected="true">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-field" *ngIf="!showSemester">
+                            <label for="">Semester</label>
+                            <p>No Semester Created. Click <a [routerLink]="['/semester']" >here</a> to create a Semester.</p>
+                            
+                         </div>
+                    
+                        <div class="btn-flex">
+                           <!-- <p *ngIf="!courseSelected" style="color: lightcoral;">Select one or more courses</p> -->
+                            <!-- <button *ngIf="hasCourses && courseSelected" class="btn btn-green">Add New</button> -->
+                            <button class="btn btn-green" *ngIf="showCampus && showSemester">Generate</button>
+                            <!-- <a class="btn btn-green">Add New</a> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
      
-            <div class="section">
+            <!-- <div class="section">
                 <div class="parent-con">
                     <div class="title">
                         <span><i class="fa fa-file" aria-hidden="true"></i>Generate</span>
@@ -41,7 +87,7 @@
                     <div  style="width: 60%; margin: auto;">
                         <div style="display: inline; text-align: center;">
                             <h3>Select a Campus to generate its time and class tables</h3>
-                           <!-- <p><a class="btn add"><i class="fa fa-plus"></i> </a></p>  -->
+                          
                             <br>
                           <p> <select name="department" class=" " style="padding: 10px;">
                           
@@ -50,22 +96,21 @@
                              <option value="Swe1">Campus C</option>
                              <option value="MIT2">Campus D</option>
                          </select></p>
+                         <h3>Select a Semester to generate its time and class tables</h3>
+                         <br>
+                         <p> <select name="department" class=" " style="padding: 10px;">
+                         
+                            <option value="Swe2">Semester 1</option>
+                            <option value="Swe2">Campus B</option>
+                            <option value="Swe1">Campus C</option>
+                            <option value="MIT2">Campus D</option>
+                        </select></p>
                          <br>
                          <p> <button class="gen-btn">Generate <i class="fa fa-atom" aria-hidden="true"></i></button></p>
                         </div>
-                        
-                        <!-- <div class=" " style="padding-right: 10px; width: 10%; display: inline;">
-                            <select name="department" class=" my-select" style="padding: 10px;">
-                          <option value="Swe2">All</option>
-                           <option value="Swe2">Campus A</option>
-                           <option value="Swe2">SWE2</option>
-                           <option value="Swe1">SWE1</option>
-                           <option value="MIT2">MIT2</option>
-                       </select>
-                       </div> -->
                     </div>
                 </div>
-            </div>
+            </div> -->
 
     </div>
 </div>

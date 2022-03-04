@@ -6,108 +6,117 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-
+public base_url:string = "http://localhost:8000/";
   constructor(private http: HttpClient) { }
 
   public getCourses(){
-       return this.http.get('http://localhost:8000/courses');
+       return this.http.get(`${this.base_url}courses`);
   }
 
   public createCourse(data:any){
-    return this.http.post("http://localhost:8000/courses", data);
+    return this.http.post(`${this.base_url}courses`, data);
   }
 
   public deleteCourse(id:string){
-    return this.http.delete(`http://localhost:8000/courses/${id}`);
+    return this.http.delete(`${this.base_url}courses/${id}`);
   }
 
 
 public getTimeTable(){
-  return this.http.get('http://localhost:8000/table');
+  return this.http.get(`${this.base_url}table`);
 }
 public getCampuses(){
-  return this.http.get('http://localhost:8000/campus');
+  return this.http.get(`${this.base_url}campus`);
 }
 public getCampuseById(id:string){
-  return this.http.get(`http://localhost:8000/campus/${id}`);
+  return this.http.get(`${this.base_url}campus/${id}`);
 }
 public createCampus(name:string){
-  return this.http.post("http://localhost:8000/campus", {name});
+  return this.http.post(`${this.base_url}campus`, {name});
 }
 public deleteCampus(id:string){
-  return this.http.delete(`http://localhost:8000/campus/${id}`);
+  return this.http.delete(`${this.base_url}campus/${id}`);
 }
 
 public editCampusName(data:any, id:string){
   console.log(data,"data");
   
-  return this.http.patch(`http://localhost:8000/campus/${id}`, {name:data});
+  return this.http.patch(`${this.base_url}campus/${id}`, {name:data});
 }
 public addClassToCampus(data:any){
-  return this.http.post(`http://localhost:8000/classes`, data);
+  return this.http.post(`${this.base_url}classes`, data);
 }
 
 public getClassesByCampusId(id:string){
-  return this.http.get(`http://localhost:8000/classes/${id}`);
+  return this.http.get(`${this.base_url}classes/${id}`);
 }
 public deleteClass(id:string){
-  return this.http.delete(`http://localhost:8000/classes/${id}`);
+  return this.http.delete(`${this.base_url}classes/${id}`);
 }
 public getLecturers(){
-  return this.http.get('http://localhost:8000/lecturer');
+  return this.http.get(`${this.base_url}lecturer`);
 }
 
 public deleteLecturer(id:string){
-  return this.http.delete(`http://localhost:8000/lecturer/${id}`);
+  return this.http.delete(`${this.base_url}lecturer/${id}`);
 }
 
 public createLecturer(data:any){
   
-  return this.http.post("http://localhost:8000/lecturer", data);
+  return this.http.post(`${this.base_url}lecturer`, data);
 }
 public getDepartments(){
-  return this.http.get('http://localhost:8000/department');
+  return this.http.get(`${this.base_url}department`);
 }
 public deleteDepartment(id:string){
-  return this.http.delete(`http://localhost:8000/department/${id}`);
+  return this.http.delete(`${this.base_url}department/${id}`);
 }
 
 public getSemester(){
-  return this.http.get('http://localhost:8000/semester');
+  return this.http.get(`${this.base_url}semester`);
 }
 
 public deleteSemester(id:string){
-  return this.http.delete(`http://localhost:8000/semester/${id}`);
+  return this.http.delete(`${this.base_url}semester/${id}`);
 }
 
 public createSemester(data:any){
   
-  return this.http.post("http://localhost:8000/semester", data);
+  return this.http.post(`${this.base_url}semester`, data);
 }
 public createSDepartment(data:any){
   
-  return this.http.post("http://localhost:8000/department", data);
+  return this.http.post(`${this.base_url}department`, data);
 }
 public getDepartmentById(id:string){
-  return this.http.get(`http://localhost:8000/department/${id}`);
+  return this.http.get(`${this.base_url}department/${id}`);
 }
 
 
 public updateDepartment(id:string, data:any){
-  return this.http.patch(`http://localhost:8000/department/${id}`, data);
+  return this.http.patch(`${this.base_url}department/${id}`, data);
 }
 public getCoursesByDepartment(id:string){
-  return this.http.get(`http://localhost:8000/courses-by-depart/${id}`);
+  return this.http.get(`${this.base_url}courses-by-depart/${id}`);
 }
 
 public getCoursesInDepartmentById(id:string){
-  return this.http.get(`http://localhost:8000/course-in-department`, {params:{department:id}});
+  return this.http.get(`${this.base_url}course-in-department`, {params:{department:id}});
 }
 public getOneCourseInDepartmentById(id:string){
-  return this.http.get(`http://localhost:8000/course-in-department/${id}`,);
+  return this.http.get(`${this.base_url}course-in-department/${id}`,);
 }
 public createCourseInDepartment(data:any){
   
-  return this.http.post("http://localhost:8000/course-in-department", data);
+  return this.http.post(`${this.base_url}course-in-department`, data);
+}
+public editCourseInDepartment(data:any,id:string){
+  
+  return this.http.patch(`${this.base_url}course-in-department/${id}`, data);
+}
+
+public generate(data:any){
+
+  return this.http.post(`${this.base_url}seating/${data.campus}/${data.semester}`, {});
 }
 }

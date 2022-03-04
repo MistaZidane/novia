@@ -20,7 +20,12 @@ public hasDepartments = false;
         this.showDepartments = true;
         this.data = ob.docs;
         if(this.data.length > 0){
-          this.hasDepartments  = true;
+          console.log(this.data[0].campus, "test");
+          
+          if(this.data[0].campus != undefined){
+            this.hasDepartments  = true;
+          }
+          
         }
         
       }
@@ -43,7 +48,7 @@ public hasDepartments = false;
     
     this.dataService.deleteDepartment(id).subscribe((ob:any)=>{
       if(ob.success){
-        if(this.data.length !> 0){
+        if(this.data.length < 1){
           this.hasDepartments = false;
         }
     this.data = this.data.filter((element:any)=>{

@@ -22,7 +22,7 @@
                                 <th class="num">#</th>
                                 <th class="name">Class Name</th>
                                 <th class="name">Size</th>
-                              
+                                <th class="name" >Is Lab</th>
                                 <th class="action">Actions</th>
                                
                             </tr>
@@ -32,7 +32,7 @@
                                 <td class="flex-center">#</td>
                                 <td class="flex-strat">{{item.name}}</td>
                                 <td class="flex-strat">{{item.size}}</td>
-                           
+                                <td class="flex-strat">{{item.isLab}}</td>
 
                                 <td class="flex-center">
                                     <div class="action">
@@ -65,6 +65,38 @@
                             <label for="">Size</label>
                             <input type="number" name="size" placeholder="35" [(ngModel)]="classData.size"> 
                         </div>
+                        <div class="form-field">
+                            <label for="">Laboratory</label>
+                            <select name="lab" [(ngModel)]="classData.isLab" (change)="checkIsLab($event)">
+                                <option value="false" selected=" true">False</option>
+                                <option value="true">True</option>
+                              
+                            </select>
+                         
+                        </div>
+                      
+                 
+                        <div class="form-field " style="height: 100%; width: 100%;" *ngIf="showDepartments">
+                          
+                            <label for="">For Departments</label>
+                            <p *ngIf="!hasDepartments" style="color: indianred;">No Department Created yet. A course must be assigned to aleast one department or general. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
+                              <div class=" seletedCourses" *ngIf="hasDepartments && showDepartments">
+                                  <div class="login-remember" *ngFor="let item of departmentList">
+                                      <div class="default-check">
+                                     
+                                          <input type="checkbox" (change)="checkDepartment($event,item._id)"  id="english">
+                                          <span>
+                                              <label [for]="item.title">{{item.name}}</label>
+                                          </span>
+                                      </div>
+                                  </div>
+                                 
+                                  
+                              </div>
+
+                             
+                            
+                          </div>
                         <div class="btn-flex">
                             <button class="btn btn-green" type="submit">Add New</button>
                             <!-- <a class="btn btn-green">Add New</a> -->
