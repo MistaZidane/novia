@@ -21,21 +21,23 @@
                     <div class="options">
                     <div class="btn-flex " style="padding-right: 10px;" *ngIf="showDepartment">
                          <select name="department" class=" my-select" style="padding-left: 10px;" (change)="selectDepartment($event)">
-                        <option [value]="item._id" selected="true" *ngFor="let item of departments">{{item.name}}</option>
+                            <option value="all" selected="true">All</option>
+                        <option [value]="item._id"  *ngFor="let item of departments">{{item.name}}</option>
                         
                     </select>
                     </div>
                     <div class="btn-flex " style="padding-right: 10px;" *ngIf="showSemester">
                         <select name="semester" class=" my-select" style="padding-left: 10px;" (change)="selectSemester($event)">
-                            <option [value]="item._id" selected="true" *ngFor="let item of semesters">{{item.name}}</option>
+                            <option [value]="item._id"  *ngFor="let item of semesters">{{item.name}}</option>
                    </select>
                    </div>
                 </div>
                     <!-- <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button> -->
                
             </div>
-            
-            <div class="table-con">
+            <p *ngIf="!hasGeneratedData">No Time table generated for selected Semester</p>
+            <div class="table-con"  *ngIf="hasGeneratedData">
+              
                 <table>
                     <thead>
                         <tr>
@@ -64,56 +66,23 @@
                         </tr>
                         
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="flex-center">SWE2</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">Labo 6</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">D36</td>
-                            <td class="flex-center">D39</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">G01</td>
-                            <td class="flex-center">G03</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">D33</td>
-                            <td class="flex-center">D13</td>
+                    <tbody >
+                        <tr *ngFor="let item of tableData">
+                            <td class="flex-center">{{item.department.name}}</td>
+                            <td class="flex-center">{{item.table[0].Monday.morning}}</td>
+                            <td class="flex-center">{{item.table[0].Monday.afternoon}}</td>
+                            <td class="flex-center">{{item.table[0].Tuesday.morning}}</td>
+                            <td class="flex-center">{{item.table[0].Tuesday.afternoon}}</td>
+                            <td class="flex-center">{{item.table[0].Wednesday.morning}}</td>
+                            <td class="flex-center">{{item.table[0].Wednesday.afternoon}}</td>
+                            <td class="flex-center">{{item.table[0].Thursday.morning}}</td>
+                            <td class="flex-center">{{item.table[0].Thursday.afternoon}}</td>
+                            <td class="flex-center">{{item.table[0].Friday.morning}}</td>
+                            <td class="flex-center">{{item.table[0].Friday.afternoon}}</td>
+                            <td class="flex-center">{{item.table[0].Saturday.morning}}</td>
+                            <td class="flex-center">{{item.table[0].Saturday.afternoon}}</td>
                            
-                        </tr>
-                        <tr>
-                            <td class="flex-center">SWE1</td>
-                            <td class="flex-center">G03</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">D09</td>
-                            <td class="flex-center">D33</td>
-                            <td class="flex-center">D13</td>
-                            <td class="flex-center">D16</td>
-                            <td class="flex-center">Labo 6</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">D36</td>
-                            <td class="flex-center">D39</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">G01</td>
-                        </tr>
-                        <tr>
-                            <td class="flex-center">MIT2</td>
-                           
-                            <td class="flex-center">D33</td>
-                            <td class="flex-center">D13</td>
-                            <td class="flex-center">D16</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">G03</td>
-                            <td class="flex-center">D09</td>
-                         
-                            <td class="flex-center">Labo 7</td>
-                            <td class="flex-center">D39</td>
-                            <td class="flex-center">D01</td>
-                            <td class="flex-center">G01</td>
-                            <td class="flex-center">D10</td>
-                            <td class="flex-center">D36</td>
-                           
-                        </tr>
+                     
                     </tbody>
                 </table>
             </div>

@@ -13,6 +13,7 @@ export class DepartmentCourseComponent implements OnInit {
 public semesters: any = [];
 public lecturers:any = [];
 public id:any;
+public departName = '';
 public activeIndex = 0;
 
 public hasCourses = false;
@@ -31,10 +32,15 @@ public courses:any;
       this.dataService.getCoursesByDepartment(param.id).subscribe((ob:any)=>{
           if(ob.success){
             console.log(ob.docs);
+
             
           }
       });
-
+      this.dataService.getDepartmentById(this.id).subscribe((depart:any)=>{
+        if(depart.success){
+          this.departName = depart.docs.name;
+        }
+      })
 
       //checking is data has be saved once 
       this.dataService.getCoursesInDepartmentById(param.id).subscribe((ob:any)=>{

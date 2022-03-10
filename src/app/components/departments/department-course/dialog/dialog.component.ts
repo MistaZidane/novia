@@ -100,6 +100,8 @@ this.activeData.periods.split(',').forEach((element:any) => {
   actualPeriod.push(parseInt(element));
   
 });
+console.log(this.activeData.periods,"period");
+
 
 this.activeData.periods = actualPeriod;
     this.dataService.editCourseInDepartment(this.activeData, this.data.id).subscribe((ob:any)=>{
