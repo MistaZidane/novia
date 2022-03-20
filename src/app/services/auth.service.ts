@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private http: HttpClient, private helper: JwtHelperService) { }
 
   login(email: string, password: string): Observable<boolean> {
-    return this.http.post<{token: string}>('http://localhost:8000/login', {email: email, password: password})
+    return this.http.post<{token: string}>('http://localhost:8001/login', {email: email, password: password})
       .pipe(
         map(result => {
           console.log(result);

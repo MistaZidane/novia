@@ -35,9 +35,11 @@
                                     <div class="action">
                                        
                                         
-                                        <a  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <!-- <a  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a> -->
                                         <a class="edit" (click)="openDialog(item._id)"> <i class="fa fa-edit" aria-hidden="true" > </i></a>
                                         <!-- <button (click)="saveData(item._id)" class="save-btn btn-green" ><i class="fa fa-edit"></i></button> -->
+                                        <a (click)="showDeleteBtn(item._id)" *ngIf="!item.showDelete" class="patial-delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <a (click)="deleteCourse(item._id)" *ngIf="item.showDelete"  class="delete" style="background-color: #e63939 !important;"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     </div>
                                 </td>
                             </tr>

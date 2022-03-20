@@ -73,11 +73,13 @@ getData(all:boolean){
               
               if(Object.keys(element).includes(day)){
                 console.log("found");
-                if(element.morning == undefined){
-                  element.morning = "_"
+                if(element[day].morning == undefined){
+                  element[day].morning = "_"
                 }
-                if(element.afternoon == undefined){
-                  element.afternoon = "_"
+                if(element[day].afternoon == undefined){
+                  element[day].afternoon = "_"
+                  console.log("afternoon", day);
+                  
                 }
                 
               }

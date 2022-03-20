@@ -3,7 +3,7 @@
         <div class="page-title">
             <p>Dashboard</p>
             <div class="crumb">
-                <a href="index.html" class="crumb-item">Dashboard</a>
+                <a  class="crumb-item">Dashboard</a>
                 <span>></span>
                 <a  class="crumb-item">Semester</a>
             </div>
@@ -72,18 +72,25 @@
                         <div class="title border">
                             <p>Add Semester</p>
                         </div>
-                        <form class="" (ngSubmit)="createSemester()">
+                        <form class="" (ngSubmit)="f.form.valid && createSemester()" #f="ngForm">
                             <div class="form-section">
                                 <div class="form-field">
                                     <label for="">Semester name</label>
-                                    <input type="text" name="title" id="" placeholder="Semester one" [(ngModel)]="newSemester.name">
+                                    <input type="text" name="title" id="" placeholder="Semester one" [(ngModel)]="newSemester.name" #name="ngModel" required>
+                                    <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                        <div *ngIf="name.errors?.required"> <p class="error">Semester name is required</p></div>
+                                    </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="">Description</label>
-                                    <textarea type="text" name="description" [(ngModel)]="newSemester.description"></textarea>
+                                    <textarea type="text" name="description" [(ngModel)]="newSemester.description" #desc="ngModel" required minlength="10"></textarea>
+                                    <div *ngIf="f.submitted && desc.invalid" class="invalid-feedback">
+                                        <div *ngIf="desc.errors?.required"> <p class="error">Semester Description is required</p></div>
+                                        <div *ngIf="desc.errors?.minlength"> <p class="error">Semester Description must be atleast 10 characters</p></div>
+                                    </div>
                                 </div>
                                 <div class="btn-flex">
-                                    <button class="btn btn-green" (click)="getData()">Add New</button>
+                                    <button class="btn btn-green" >Add New</button>
                                    
                                 </div>
                             </div>

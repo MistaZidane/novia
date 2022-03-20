@@ -6,34 +6,53 @@
                     <p>Add a Department</p>
                     <!-- <a [routerLink]="['/departments/add-department']" class="btn btn-green" style="align-self: end;">Add Department <i class="fa fa-plus"></i></a> -->
                 </div>
-                <form class="" (ngSubmit)="createDepartment()">
+                <form class="" (ngSubmit)=" f.form.valid &&  createDepartment()" #f="ngForm">
                     <div class="form-section">
                         <div class="form-field">
                             <label for="">Department Name</label>
-                            <input type="text" name="name"  [(ngModel)]="newDepartment.name" placeholder="SWE2" >
+                            <input type="text" name="name"  [(ngModel)]="newDepartment.name" placeholder="SWE2" #_name="ngModel" required minlength="2">
+                            <div *ngIf="f.submitted && _name.invalid" class="invalid-feedback">
+                                <div *ngIf="_name.errors?.required"> <p class="error">The Name field is required</p></div>
+                                <div *ngIf="_name.errors?.minlength"> <p class="error">The Name field must be atleast 2 characters</p></div>
+                          
+                            </div>
                         </div>
 
                         <div class="form-field">
                             <label for="">Department Size</label>
-                            <input type="number" name="size" [(ngModel)]="newDepartment.size" placeholder="50" >
+                            <input type="number" name="size" required #size="ngModel" [(ngModel)]="newDepartment.size" placeholder="50" >
+                            <div *ngIf="f.submitted && _name.invalid" class="invalid-feedback">
+                                <div *ngIf="size.errors?.required"> <p class="error">The Size field is required</p></div>
+                              
+                          
+                            </div>
                         </div>
                         <div class="form-field" *ngIf="!hasCampuses">
                         <p  style="color: lightcoral;">No Campus Created <a [routerLink]="['/campus']" style="color: indigo; text-decoration: underline;">Click to create a campus</a></p>
                     </div>
                         <div class="form-field" *ngIf="hasCampuses">
                             <label for="">Department Campus</label>
-                            <select name="campus" id="" [(ngModel)]="newDepartment.campus">
-                                <option *ngFor="let item of campuses" [value]="item._id" >{{item.name}}</option>
+                            <select name="campus" id="" required #campus="ngModel"  [(ngModel)]="newDepartment.campus">
+                                <option *ngFor="let item of campuses"  [value]="item._id" >{{item.name}}</option>
                                
                             </select>
+                            <div *ngIf="f.submitted && campus.invalid" class="invalid-feedback">
+                                <div *ngIf="campus.errors?.required"> <p class="error">The Campus field is required</p></div>
+                              
                           
+                            </div>
                         </div>
                         <div class="form-field">
                             <label for="">Session</label>
-                            <select name="session" id="" [(ngModel)]="newDepartment.session">
+                            <select name="session" id=""required #session="ngModel"  [(ngModel)]="newDepartment.session">
                                 <option value="Night">Night</option>
                                 <option value="Day">Day</option>
                             </select>
+                            <div *ngIf="f.submitted && session.invalid" class="invalid-feedback">
+                                <div *ngIf="session.errors?.required"> <p class="error">The Session field is required</p></div>
+                              
+                          
+                            </div>
                         </div>
                         <!-- <div class="form-field" *ngIf="!hasSemesters">
                             <p  style="color: lightcoral;">No Semester created <a [routerLink]="['/semester']" style="color: indigo; text-decoration: underline;">Click to create a semester</a></p>

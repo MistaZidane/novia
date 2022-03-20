@@ -42,13 +42,13 @@ let footer =<HTMLElement> document.querySelector('.dashboard-grid .main footer')
   
   }
 
-  toggleSearchForm(){
-    let searchBtn =<HTMLButtonElement> document.querySelector('.search-btn');
-let searchForm =<HTMLInputElement> document.querySelector('form.search');
+//   toggleSearchForm(){
+//     let searchBtn =<HTMLButtonElement> document.querySelector('.search-btn');
+// let searchForm =<HTMLInputElement> document.querySelector('form.search');
 
 
-    searchForm.classList.toggle('show');
+//     searchForm.classList.toggle('show');
 
-  }
+//   }
 
 }

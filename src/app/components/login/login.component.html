@@ -28,22 +28,35 @@
               </div>
              
             </form> -->
-            <form class="authentication-form" (ngSubmit)="submit()">
-                <h4 *ngIf="error">{{error}}</h4>
+            <form class="authentication-form" (ngSubmit)="f.form.valid && submit()" #f="ngForm">
+              
+               
                 <p>Login</p>
+                <h4 *ngIf="error" class="error">The Email or Password is wrong. Please try again</h4>
                     <div class="form-field u-margin-bottom-small">
                        
                     
                         <i class="fas fa-user "></i>
-                        <input type="email" name="email" id="email" placeholder="Email" [(ngModel)]="email">
+                        <input type="email" name="email" id="email" placeholder="Email" #emaill="ngModel" [(ngModel)]="email" required email>
+                       
                     </div>
+                    <div *ngIf="f.submitted && emaill.invalid" class="invalid-feedback">
+                      <div *ngIf="emaill.errors?.required"> <h5 class="error">An Email list is required</h5></div>
+                      <div *ngIf="emaill.errors?.email"> <h5 class="error">The text entererd must be an email</h5></div>
+                
+                  </div>
                     <div class="form-field u-margin-bottom-small">
                         
                        
                         <i class="fas fa-lock "></i>
-                        <input type="password" name="password" id="password" placeholder="Password" [(ngModel)]="password">
+                        <input type="password" name="password" id="password" placeholder="Password" #pass="ngModel" [(ngModel)]="password" required minlength="4">
                        
                     </div>
+                    <div *ngIf="f.submitted && pass.invalid" class="invalid-feedback">
+                      <div *ngIf="pass.errors?.required"> <h5 class="error">Password is required</h5></div>
+                      <div *ngIf="pass.errors?.minlength"> <h5 class="error">Password is must be atleast 4 characters</h5></div>
+                
+                  </div>
                     <div class="btn-flex">
                           <input type="submit" value="Login" class="btn btn-green" >
                     </div>

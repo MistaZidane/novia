@@ -1,0 +1,65 @@
+<div class="content">
+    <div class="con">
+        <div class="page-title">
+            <p>Dashboard</p>
+            <div class="crumb">
+                <a  class="crumb-item">Dashboard</a>
+                <span>></span>
+                <a  class="crumb-item">Emails</a>
+            </div>
+        </div>
+
+ <div class="section">
+    <div class="parent-con">
+        <div class="data-table">
+          
+            
+            <div>
+                <div class="create-post-section parent-con">
+                    <div class="title border">
+                        <p>Add Emails</p>
+                    </div>
+                    <form class="" (ngSubmit)="f.form.valid && addEmails()"  #f="ngForm">
+                        <div class="form-section">
+                            <!-- <div class="form-field">
+                                <label for="">Subject</label>
+                                <input type="text" name="subject"  placeholder="New Time table" [(ngModel)]="subject">
+                            </div> -->
+                            <div class="form-field">
+                                <label for="">Department</label>
+                                <select name="group" *ngIf="showDepartments" >
+                                    <option [value]="item._id" *ngFor="let item of departments">{{item.name}}</option>
+                                </select>
+
+                            </div>
+                            <div class="form-field">
+                                <label for="">For</label>
+                                <select name="type"    [(ngModel)]="emailsType">
+                                    <option value="false">Students</option>
+                                        <option value="true">Lecturers</option>
+                                </select>
+                                
+                            </div>
+                            <div class="form-field">
+                                <label for="">Emails</label>
+                               <textarea name="emails" [(ngModel)]="emails" placeholder="test@gmail.com,test2@gmail.com" cols="30" rows="11" #emailsList="ngModel" required ></textarea>
+                               <div *ngIf="f.submitted && emailsList.invalid" class="invalid-feedback">
+                                <div *ngIf="emailsList.errors?.required"> <p class="error">An Email list is required</p></div>
+                          
+                            </div>
+                            </div>
+                            <div class="btn-flex">
+                                <button type="submit" class="btn btn-green">Add Emails</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+</div>
+</div>

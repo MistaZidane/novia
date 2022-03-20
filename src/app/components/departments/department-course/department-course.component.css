@@ -4,3 +4,11 @@
 .save-btn:hover{
     background-color: rgb(221, 177, 34);
 }
+.patial-delete{
+    font-size: 14px;
+    border-radius: 5px;
+    padding: .5rem;
+    margin-right: .5rem;
+    color: #fff;
+    background-color: #af6a41;
+}

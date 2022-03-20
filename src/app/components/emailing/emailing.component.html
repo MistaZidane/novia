@@ -3,24 +3,28 @@
         <div class="page-title">
             <p>Mailing Form </p>
             <div class="crumb">
-                <a href="index.html" class="crumb-item">Dashboard</a>
+                <a  class="crumb-item">Dashboard</a>
                 <span>></span>
                 <a href="" class="crumb-item">Mailer</a>
             </div>
         </div>
 
         <div class="section">
-            <div class="flex-2-1 category">
+            <div class=" category">
                 <div>
                     <div class="create-post-section parent-con">
                         <div class="title border">
                             <p>Mail</p>
                         </div>
-                        <form class="" (ngSubmit)="sendEmail()">
+                        <form class="" (ngSubmit)="f.form.valid &&  sendEmail()" #f="ngForm">
                             <div class="form-section">
                                 <div class="form-field">
                                     <label for="">Subject</label>
-                                    <input type="text" name="subject"  placeholder="New Time table" [(ngModel)]="subject">
+                                    <input type="text" name="subject"  placeholder="New Time table" [(ngModel)]="subject" #sub="ngModel" required minlength="4">
+                                    <div *ngIf="f.submitted && sub.invalid" class="invalid-feedback">
+                                        <div *ngIf="sub.errors?.required"> <p class="error">The Subject field is required</p></div>
+                                        <div *ngIf="sub.errors?.minlength"> <p class="error">The Subject field must be atleast 4 characters</p></div>
+                                    </div>
                                 </div>
                                 <!-- <div class="form-field">
                                     <label for="">Recipients</label>
@@ -28,9 +32,34 @@
                                 </div> -->
                                 <div class="form-field">
                                     <label for="">Message</label>
-                                   <textarea name="message" [(ngModel)]="message" cols="30" rows="10"></textarea>
+                                   <textarea name="message" [(ngModel)]="message" cols="30" rows="10" #msg="ngModel" minlength="10" required></textarea>
+                                   <div *ngIf="f.submitted && msg.invalid" class="invalid-feedback">
+                                    <div *ngIf="msg.errors?.required"> <p class="error">The Subject field is required</p></div>
+                                    <div *ngIf="msg.errors?.minlength"> <p class="error">The Subject field must be atleast 10 characters</p></div>
                                 </div>
-                                <div class="btn-flex">
+                                </div>
+                                <div class="form-section">
+                                    <div class="form-field" style="margin-bottom: 0px;">     <label for="">Department</label></div>
+                                        <div class="btn-flex " style="padding-right: 10px; padding-bottom: 10px;">
+                                            <select name="department" class=" my-select" style="padding: 10px;" *ngIf="showDepartments" [(ngModel)]="department">
+                                          <option value="all">All</option>
+                                          
+                                          <option [value]="item._id" *ngFor="let item of departments">{{item.name}}</option>
+                                       </select>
+                                       </div>
+                                     
+                                       <div class="form-field" style="margin-bottom: 0px;">     <label for="">User type</label></div>
+                                        <div class="btn-flex " style="padding-right: 10px;">
+                                            <select name="lecturers" class=" my-select" style="padding: 10px;"  [(ngModel)]="lecturers">
+                                          <option value="all">All</option>
+                                          
+                                          <option value="true" >Lecturer</option>
+                                          <option value="false" >Student</option>
+                                       </select>
+                                       </div>
+                                
+                                </div>
+                                <div class="btn-flex" style="margin-top: 10px;">
                                     <button type="submit" class="btn btn-green">Send Mail</button>
                                 </div>
                             </div>
@@ -39,47 +68,34 @@
 
                 </div>
                 <div>
-                    <div class="create-category parent-con">
+                    <!-- <div class="create-category parent-con">
                         <div class="title border">
                             <p>Select Target</p>
                         </div>
-                        <form class="">
+                        <form class="" >
                             <div class="form-section">
-                             
-                                    <div class="btn-flex " style="padding-right: 10px;">
-                                        <select name="department" class=" my-select" style="padding: 10px;">
-                                      <option value="Swe2">All</option>
-                                       <option value="Swe2">Campus A</option>
-                                       <option value="Swe2">SWE2</option>
-                                       <option value="Swe1">SWE1</option>
-                                       <option value="MIT2">MIT2</option>
+                                <div class="form-field">     <label for="">Department</label></div>
+                                    <div class="btn-flex " style="padding-right: 10px; padding-bottom: 10px;">
+                                        <select name="department" class=" my-select" style="padding: 10px;" *ngIf="showDepartments" [(ngModel)]="department">
+                                      <option value="all">All</option>
+                                      
+                                      <option [value]="item._id" *ngFor="let item of departments">{{item.name}}</option>
                                    </select>
                                    </div>
-                                
-                                <div class="form-field">
-                                    <!-- <label for="">Send to</label> -->
-                                    <div class="flex">
-                                        <div class="login-remember">
-                                            <div class="default-check">
-                                                <input type="checkbox" name="english" id="english">
-                                                <span>
-                                                    <label for="english">Lecturers</label>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="login-remember">
-                                            <div class="default-check">
-                                                <input type="checkbox" name="french" id="french">
-                                                <span>
-                                                    <label for="french">Students</label>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                 
+                                   <div class="form-field">     <label for="">User type</label></div>
+                                    <div class="btn-flex " style="padding-right: 10px;">
+                                        <select name="lecturers" class=" my-select" style="padding: 10px;"  [(ngModel)]="lecturers">
+                                      <option value="all">All</option>
+                                      
+                                      <option value="true" >Lecturer</option>
+                                      <option value="false" >Student</option>
+                                   </select>
+                                   </div>
+                            
                             </div>
                         </form>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
         <div class="page-title">
             <p>Dashboard</p>
             <div class="crumb">
-                <a href="index.html" class="crumb-item">Dashboard</a>
+                <a  class="crumb-item">Dashboard</a>
                 <span>></span>
                 <a  class="crumb-item">Courses</a>
             </div>
@@ -72,11 +72,16 @@
                         <div class="title border">
                             <p>Add Course</p>
                         </div>
-                        <form class="" (ngSubmit)="createCourse()">
+                        <form class="" (ngSubmit)="f.form.valid &&  createCourse()" #f="ngForm">
                             <div class="form-section">
                                 <div class="form-field">
                                     <label for="">Course title</label>
-                                    <input type="text" name="title" id="" placeholder="Course A" [(ngModel)]="title">
+                                    <input type="text" name="title" id="" #tilt="ngModel"  required minlength="4"  placeholder="Course A" [(ngModel)]="title">
+                                    <div *ngIf="f.submitted && tilt.invalid" class="invalid-feedback">
+                                        <div *ngIf="tilt.errors?.required"> <p class="error">Title is required</p></div>
+                                        <div *ngIf="tilt.errors?.minlength"> <p class="error">Title must be atleast 4 characters</p></div>
+                                  
+                                    </div>
                                 </div>
                                 
                                 <label for="">Departments</label>
@@ -137,10 +142,16 @@
                                   </div>
                                 <div class="form-field">
                                     <label for="">Description</label>
-                                    <textarea type="text" name="description" [(ngModel)]="description"></textarea>
+                                    <textarea type="text" name="description" #desc="ngModel" required [(ngModel)]="description"></textarea>
+                                    <div *ngIf="f.submitted && desc.invalid" class="invalid-feedback">
+                                        <div *ngIf="desc.errors?.required"> <p class="error">Description is required</p></div>
+                                  
+                                    </div>
                                 </div>
-                                <div class="btn-flex">
+                                <div  style="align-items: center;">
                                     <p *ngIf="!departmentSelected && !generalCourse" style="color: lightcoral;">Select one or more Departments. You can select the general option</p>
+                                   
+                                    <p *ngIf="!lecturerSelected" style="color: lightcoral;">Select one or more Lecturers.</p>
                                     <button class="btn btn-green" *ngIf="(departmentSelected || generalCourse) && lecturerSelected" >Add New</button>
                                    
                                 </div>

@@ -3,7 +3,7 @@
         <div class="page-title">
             <p>Dashboard</p>
             <div class="crumb">
-                <a href="index.html" class="crumb-item">Dashboard</a>
+                <a  class="crumb-item">Dashboard</a>
                 <span>></span>
                 <a  class="crumb-item">Lecturers</a>
             </div>
@@ -62,19 +62,29 @@
                         <div class="title border">
                             <p>Add Lecturer</p>
                         </div>
-                        <form class="" (ngSubmit)="addLecturer()">
+                        <form class="" (ngSubmit)="f.form.valid && addLecturer()"  #f="ngForm">
                             <div class="form-section">
                                 <div class="form-field">
                                     <label for="">Lecturer name</label>
-                                    <input type="text" name="name" placeholder="Lecturer A" [(ngModel)]="newLecturer.name">
+                                    <input type="text" name="name" required placeholder="Lecturer A" #name="ngModel"  [(ngModel)]="newLecturer.name">
+                                    <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                        <div *ngIf="name.errors?.required"> <p class="error">Lecturer name is required</p></div>
+                                    </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="">Email</label>
-                                    <input type="email" name="email" placeholder="test@gmail.com" [(ngModel)]="newLecturer.email">
+                                    <input type="email" name="email" required placeholder="test@gmail.com" #email="ngModel"  [(ngModel)]="newLecturer.email" email>
+                                    <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                                        <div *ngIf="email.errors?.required"> <p class="error">Lecturer email is required</p></div>
+                                        <div *ngIf="email.errors?.email"><p class="error">Email must be a valid email address</p></div>
+                                    </div>
                                 </div>
                                 <div class="form-field">
                                     <label for="">Phone</label>
-                                    <input type="phone" name="phone" placeholder="+237 676983069" [(ngModel)]="newLecturer.phone">
+                                    <input type="phone" name="phone" required placeholder="+237 676983069" #phone="ngModel"  [(ngModel)]="newLecturer.phone">
+                                    <div *ngIf="f.submitted && phone.invalid" class="invalid-feedback">
+                                        <div *ngIf="phone.errors?.required"> <p class="error">Lecturer phone is required</p></div>
+                                    </div>
                                 </div>
                                 <!-- <label for="">Courses</label> -->
                                 <!-- <div class="form-field " style="height: 100%; width: 100%;">

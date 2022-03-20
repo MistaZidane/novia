@@ -8,7 +8,7 @@ export class EmailService {
 
   constructor(private http: HttpClient) { }
 
-  public sendEmails(subject:string, message:string, to:object){
-   return this.http.post<{token: string}>('http://localhost:8000/send-mail', {subject: subject, message: message,to});
+  public sendEmails(data:any){
+   return this.http.post<{token: string}>('http://localhost:8001/send-mail',data);
   }
 }

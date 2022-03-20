@@ -55,24 +55,35 @@
                 <div class="title border">
                     <p>Add Class</p>
                 </div>
-                <form class="" (ngSubmit)="addClass()">
+                <form class="" (ngSubmit)="f.form.valid &&  addClass()" #f="ngForm">
                     <div class="form-section">
                         <div class="form-field">
                             <label for="">Class name</label>
-                            <input type="text" name="name" placeholder="Class Name" [(ngModel)]="classData.name">
+                            <input type="text" name="name" placeholder="Class Name" [(ngModel)]="classData.name" #name="ngModel" required>
+                            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                <div *ngIf="name.errors?.required"> <p class="error">The Name field is required</p></div>
+
+                            </div>
                         </div>
                         <div class="form-field">
                             <label for="">Size</label>
-                            <input type="number" name="size" placeholder="35" [(ngModel)]="classData.size"> 
+                            <input type="number" #size="ngModel" required name="size" placeholder="35" [(ngModel)]="classData.size"> 
+                            <div *ngIf="f.submitted && size.invalid" class="invalid-feedback">
+                                <div *ngIf="size.errors?.required"> <p class="error">The Size field is required</p></div>
+
+                            </div>
                         </div>
                         <div class="form-field">
                             <label for="">Laboratory</label>
-                            <select name="lab" [(ngModel)]="classData.isLab" (change)="checkIsLab($event)">
+                            <select  #lab="ngModel" required name="lab" [(ngModel)]="classData.isLab" (change)="checkIsLab($event)">
                                 <option value="false" selected=" true">False</option>
                                 <option value="true">True</option>
                               
                             </select>
-                         
+                            <div *ngIf="f.submitted && lab.invalid" class="invalid-feedback">
+                                <div *ngIf="lab.errors?.required"> <p class="error">The Lab field is required</p></div>
+
+                            </div>
                         </div>
                       
                  

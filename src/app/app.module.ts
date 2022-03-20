@@ -25,7 +25,6 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { JwtInterceptor } from './jwt.interceptor';
 import { TimeTableComponent } from './components/time-table/time-table.component';
 import { SeatingComponent } from './components/seating/seating.component';
-import { LogsComponent } from './components/logs/logs.component';
 import { EmailingComponent } from './components/emailing/emailing.component';
 import { GenerateComponent } from './components/generate/generate.component';
 import { ViewDepartmentsComponent } from './components/departments/view-departments/view-departments.component';
@@ -37,6 +36,8 @@ import { SemesterComponent } from './components/semester/semester.component';
 import { DepartmentCourseComponent } from './components/departments/department-course/department-course.component';
 import { DialogComponent } from './components/departments/department-course/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { StatsComponent } from './components/stats/stats.component';
+import { EmailsComponent } from './components/emails/emails.component';
 
 
 
@@ -60,7 +61,6 @@ export function tokenGetter() {
     DepartmentsComponent,
     TimeTableComponent,
     SeatingComponent,
-    LogsComponent,
     EmailingComponent,
     GenerateComponent,
     ViewDepartmentsComponent,
@@ -71,6 +71,8 @@ export function tokenGetter() {
     SemesterComponent,
     DepartmentCourseComponent,
     DialogComponent,
+    StatsComponent,
+    EmailsComponent,
 
     
   ],

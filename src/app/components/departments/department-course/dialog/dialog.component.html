@@ -8,19 +8,27 @@
         <div class="title border" style="background-color: rebeccapurple; width: 100%; height: 10px;" *ngIf="activeData.ready">
         
         </div>
-        <form class="" (ngSubmit)="editInfo()" #myForm>
+        <form class="" (ngSubmit)="f.form.valid && editInfo()" #f="ngForm">
             <div class="form-section" style="width: 100%;">
                
                 <div class="form-field">
                     <label for="">Number of Hours</label>
-                    <input type="number" name="totHours" [(ngModel)]="activeData.totHours" id="" placeholder="30" [value]="activeData.totHours">
+                    <input type="number" name="totHours "#noh="ngModel"  required [(ngModel)]="activeData.totHours" id="" placeholder="30" [value]="activeData.totHours">
+                    <div *ngIf="f.submitted && noh.invalid" class="invalid-feedback">
+                        <div *ngIf="noh.errors?.required"> <p class="error">Number of hours is required</p></div>
+                  
+                    </div>
                 </div>
                 <div class="form-field">
                     <label for="">Lecturer: {{lecturerName}}</label>
-                    <select name="lecturer"   [(ngModel)]="activeData.lecturer">
+                    <select name="lecturer" #activeLec="ngModel"  required   [(ngModel)]="activeData.lecturer">
                         <option *ngFor="let lecturer of lecturers"  [value]="lecturer._id">{{lecturer.name}}</option>
                         
                     </select>
+                    <div *ngIf="f.submitted && activeLec.invalid" class="invalid-feedback">
+                        <div *ngIf="activeLec.errors?.required"> <p class="error">Lecturer is required</p></div>
+                  
+                    </div>
                 </div>
                 <div class="form-field" *ngIf="!hasSemester">
                     <label> No Semester Created. You Must Create atleast one semester</label>
@@ -29,13 +37,17 @@
                 <div class="form-field" *ngIf="hasSemester">
                     <label for="">Semester: {{SemesterName}}</label>
                    
-                    <select name="semester" id="" #semester  [(ngModel)]="activeData.semester">
+                    <select name="semester" id="" #semester  #sem="ngModel"  required   [(ngModel)]="activeData.semester">
                         <option *ngFor="let semester of semesters"  [value]="semester._id">{{semester.name}}</option>
                     </select>
+                    <div *ngIf="f.submitted && sem.invalid" class="invalid-feedback">
+                        <div *ngIf="sem.errors?.required"> <p class="error">Semester is required</p></div>
+                  
+                    </div>
                 </div>
                 <div class="form-field">
                     <label for="">Day: {{days}}</label>
-                    <select name="day" id=""   [(ngModel)]="activeData.days[0]">
+                    <select name="day" id=""  #day="ngModel"  required     [(ngModel)]="activeData.days[0]">
                         <option value="Monday">MONDAY</option>
                         <option value="Tuesday">TUESDAY</option>
                         <option value="Wednesday">WEDNESDAY</option>
@@ -45,10 +57,14 @@
                   
                       
                     </select>
+                    <div *ngIf="f.submitted && day.invalid" class="invalid-feedback">
+                        <div *ngIf="day.errors?.required"> <p class="error">Day is required</p></div>
+                  
+                    </div>
                 </div>
                 <div class="form-field">
                     <label for="">Period: {{periods}}</label>
-                    <select name="periods"   [(ngModel)]="activeData.periods">
+                    <select name="periods" #period="ngModel"  required    [(ngModel)]="activeData.periods">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -58,13 +74,21 @@
                         <option value="1,2,3,4">1,2,3 & 4</option>
                         
                     </select>
+                    <div *ngIf="f.submitted && period.invalid" class="invalid-feedback">
+                        <div *ngIf="period.errors?.required"> <p class="error">Period is required</p></div>
+                  
+                    </div>
                 </div>
                 <div class="form-field">
                     <label for="">Needs Lab: {{needsLab}}</label>
-                    <select name="needsLab" id="" #lab (change)="selectNeedsLab(activeData._id,lab.value)" [(ngModel)]="activeData.needsLab">
+                    <select name="needsLab" #lb="ngModel"  required   id="" #lab (change)="selectNeedsLab(activeData._id,lab.value)" [(ngModel)]="activeData.needsLab">
                         <option [value]="activeData.needsLab"  selected="true">{{activeData.needsLab}}</option>
                              <option [value]="!activeData.needsLab">{{!activeData.needsLab}}</option>
                     </select>
+                    <div *ngIf="f.submitted && lb.invalid" class="invalid-feedback">
+                        <div *ngIf="lb.errors?.required"> <p class="error">Needs Lab status is required</p></div>
+                  
+                    </div>
                 </div>
               
             </div>

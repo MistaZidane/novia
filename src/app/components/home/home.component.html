@@ -3,98 +3,38 @@
         <div class="page-title">
             <p>Dashboard</p>
             <div class="crumb">
-                <a href="index.html" class="crumb-item">Dashboard</a>
+                <a  class="crumb-item">Dashboard</a>
                 <span>></span>
-                <a href="" class="crumb-item">Home</a>
+                <a class="crumb-item">Home</a>
             </div>
         </div>
 
-        <div class="section">
-            <div class="flex-4">
-                <a href="" class="stat-card">
-                    <div class="stat-name">Courses</div>
-                    <div class="stat-value">60</div>
-                </a>
-                <a href="" class="stat-card">
-                    <div class="stat-name">Departments</div>
-                    <div class="stat-value">16</div>
-                </a>
-                <a href="" class="stat-card">
-                    <div class="stat-name">Lecturers</div>
-                    <div class="stat-value">43</div>
-                </a>
-                <a href="" class="stat-card">
-                    <div class="stat-name">Campuses</div>
-                    <div class="stat-value">64</div>
-                </a>
-            </div>
-        </div>
+      <app-stats></app-stats>
 
-        <div class="section">
-            <div class="stat-con">
-                <div class="flex">
-                    <div class="chart-con">
-                        <div class="chart-top">
-                            <div class="chart-title">
-                                <div class="chart-name">Statistics Here</div>
-                                <div class="chart-time">as of 09 June 2021, 09:41 PM</div>
-                            </div>
-                            <div class="chart-tags">
-                                <div class="tag active">Today</div>
-                                <div class="tag">Yesterday</div>
-                            </div>
-                        </div>
-                        <img src="./assets/images/svg/graph.svg" alt="">
-                    </div>
-                    <div class="chart-stats">
-                        <div class="chart-stat">
-                            <div class="name">Resolved</div>
-                            <div class="value">449</div>
-                        </div>
-                        <div class="chart-stat">
-                            <div class="name">Received</div>
-                            <div class="value">426</div>
-                        </div>
-                        <div class="chart-stat">
-                            <div class="name">Average first response time</div>
-                            <div class="value">33m</div>
-                        </div>
-                        <div class="chart-stat">
-                            <div class="name">Average response time</div>
-                            <div class="value">3h 8m</div>
-                        </div>
-                        <div class="chart-stat">
-                            <div class="name">Resolution within SLA</div>
-                            <div class="value">94%</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+       
         <div class="flex-2">
             <div class="section">
                 <div class="parent-con">
                     <div class="title">
-                        <span><i class="fa fa-file" aria-hidden="true"></i>latest pages</span>
-                        <a href="" class="btn btn-white">View all</a>
+                        <span><i class="fa fa-file" aria-hidden="true"></i>Pages</span>
+                        <!-- <a href="" class="btn btn-white">View all</a> -->
                     </div>
                     <div class="latest-pages">
                         <div class="latest-page">
-                            <p>Homepage</p>
-                            <a href=""><i class="fas fa-edit"></i></a>
+                            <p>Departments</p>
+                            <a [routerLink]="['/departments']" ><i class="fas fa-eye"></i></a>
                         </div>
                         <div class="latest-page">
-                            <p>Contact us</p>
-                            <a href=""><i class="fas fa-edit"></i></a>
+                            <p>Courses</p>
+                            <a [routerLink]="['/courses']" ><i class="fas fa-eye"></i></a>
                         </div>
                         <div class="latest-page">
-                            <p>Write</p>
-                            <a href=""><i class="fas fa-edit"></i></a>
+                            <p>Campuses</p>
+                            <a [routerLink]="['/campus']" ><i class="fas fa-eye"></i></a>
                         </div>
                         <div class="latest-page">
-                            <p>I say hein</p>
-                            <a href=""><i class="fas fa-edit"></i></a>
+                            <p>Lecturers</p>
+                            <a [routerLink]="['/lecturers']" ><i class="fas fa-eye"></i></a>
                         </div>
                     </div>
                 </div>

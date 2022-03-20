@@ -39,11 +39,15 @@
                 <div class="title border">
                     <p>Add Campus</p>
                 </div>
-                <form class="" (ngSubmit)="addCampus()">
+                <form class="" (ngSubmit)="f.form.valid && addCampus()" #f="ngForm">
                     <div class="form-section">
                         <div class="form-field">
                             <label for="">Campus name</label>
-                            <input minlength="1" type="text" name="title" id="" placeholder="Campus A" [(ngModel)]="title">
+                            <input  type="text" name="title" required minlength="6"  placeholder="Campus A" [(ngModel)]="title"  #ti="ngModel" >
+                            <div *ngIf="f.submitted && ti.invalid" class="invalid-feedback">
+                                <div *ngIf="ti.errors?.required"> <p class="error">Name is required</p></div>
+                                <div *ngIf="ti.errors?.minlength"> <p class="error">Name must be atleast 4 required</p></div>
+                            </div>
                         </div>
                        
                         <div class="btn-flex">

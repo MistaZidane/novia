@@ -21,7 +21,6 @@
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
-    transition-duration: .3s;
     list-style-type: none;
     border: none;
     outline: none;
@@ -2136,4 +2135,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .table-con{
     overflow-x: scroll !important;
+}
+
+.error{
+    color: #e63939;
 }

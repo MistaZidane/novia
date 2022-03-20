@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-department-course',
@@ -16,10 +17,11 @@ public id:any;
 public departName = '';
 public activeIndex = 0;
 
+
 public hasCourses = false;
 public dataToBeSaved:any = [];
 public courses:any;
-  constructor(private dataService:DataService,  private route: ActivatedRoute,public dialog: MatDialog ) { }
+  constructor(private dataService:DataService,  private route: ActivatedRoute,public dialog: MatDialog, private toast: ToastrService ) { }
 
   ngOnInit(): void {
 
@@ -50,6 +52,9 @@ public courses:any;
           if(ob.docs.length>0){
             console.log("data exist Looooooooll");
             this.courses = ob.docs;
+            this.courses.forEach((element:any) => {
+              element.showDelete = false;
+            });
             console.log(ob.docs);
 
             this.hasCourses = true;
@@ -80,5 +85,28 @@ public courses:any;
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+  deleteCourse(id:string){
+    console.log(id);
+    
+    this.dataService.deleteSCoureInDepartment(id).subscribe((ob:any)=>{
+      if(ob.success){
+        this.toast.success('Course Deleted Successfully. Make sure you regenarate the Time table involved', 'Success');
+      }
+      else{
+        this.toast.error("Failed to delete Course.","Failed");
+      }
+    })
+  }
+
+  showDeleteBtn(id:string){
+
+console.log("clicked");
+this.courses.forEach((element:any) => {
+  if(element._id == id){
+    element.showDelete = true;
+    this.toast.warning("Double click to delete Course", "Delete")
+  }
+});
   }
 }

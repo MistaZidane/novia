@@ -132,5 +132,13 @@ export class DataService {
 
     return this.http.get(`${this.base_url}table/${semesterId}/${departmentId}`);
   }
+  public deleteSCoureInDepartment(id: string) {
+    return this.http.delete(`${this.base_url}course-in-department/${id}`);
+  }
 
+
+  public createEmails(data: any) {
+
+    return this.http.post(`${this.base_url}email`, data);
+  }
 }
