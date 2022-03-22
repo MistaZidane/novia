@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -90,18 +91,20 @@ export function tokenGetter() {
       }
     }),
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
   },
+  
 {
   provide:HTTP_INTERCEPTORS,
   useClass: JwtInterceptor,
   multi:true
-}],
+},
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

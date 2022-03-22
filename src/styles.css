@@ -158,7 +158,7 @@ section {
     height: 100vh;
     background-color: var(--dark-bg);
     position: fixed;
-    display: hidden;
+    display: none;
     top: 0;
     left: -260px;
 }
@@ -2138,5 +2138,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .error{
-    color: #e63939;
+    color: indianred;
 }

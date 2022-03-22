@@ -1,18 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { IntrojsService } from 'src/app/services/introjs.service';
+import { ShepherdService } from 'angular-shepherd';
+import {steps}  from "../../services/steps";
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit,AfterViewInit {
 
-  constructor() { }
+public step:any = steps;
+  constructor(private introService: IntrojsService,private shepherdService: ShepherdService) { }
 
   ngOnInit(): void {
-
+ 
   }
-
+  ngAfterViewInit(): void {
+    this.shepherdService.defaultStepOptions = {
+      classes: 'profile custom-class-name-2',
+      scrollTo: false,
+      cancelIcon: {
+        enabled: true
+      }
+    };
+    this.shepherdService.modal = true;
+    this.shepherdService.confirmCancel = false;
+  
+  
+}
+startTour(){
+  this.shepherdService.requiredElements = [
+    {
+      selector: '.profile',
+      message: 'No search results found. Please execute another search, and try to start the tour again.',
+      title: 'No results'
+    },
+    {
+      selector: '.sidebar',
+      message: 'To continue the tour, You have to open the side bar',
+      title: 'Side Bar closed'
+    },
+  ];
+  this.shepherdService.addSteps(
+  this.step
+  );
+    this.shepherdService.start();
+}
   toggle(){
     let sideBarBtn =<HTMLButtonElement> document.querySelector('.nav-toggler-btn');
 let sideBar =<HTMLElement> document.querySelector('.dashboard-grid .sidebar');
