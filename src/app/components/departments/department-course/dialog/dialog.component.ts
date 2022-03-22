@@ -91,11 +91,13 @@ export class DialogComponent implements OnInit {
     
   }
   editInfo(){
-    console.log(this.activeData);
+  
     // semester+day+period+department
-    console.log(this.activeData.semester+this.activeData.day+this.activeData.periods);
+
 let actualPeriod:any = [];
-this.activeData.periods.split(',').forEach((element:any) => {
+console.log(typeof this.activeData.periods,"herreeeerre");
+if(typeof this.activeData.periods == 'string'){
+  this.activeData.periods.split(',').forEach((element:any) => {
 
   actualPeriod.push(parseInt(element));
   
@@ -104,6 +106,18 @@ console.log(this.activeData.periods,"period");
 
 
 this.activeData.periods = actualPeriod;
+}
+else{
+  this.activeData.periods.join().split(',').forEach((element:any) => {
+
+    actualPeriod.push(parseInt(element));
+    
+  });
+  this.activeData.periods = actualPeriod;
+}
+
+console.log(actualPeriod,"thereeeeeeee");
+
     this.dataService.editCourseInDepartment(this.activeData, this.data.id).subscribe((ob:any)=>{
       if(ob.success){
         console.log(ob.docs);
