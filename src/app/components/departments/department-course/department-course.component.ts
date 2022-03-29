@@ -92,6 +92,14 @@ public courses:any;
     this.dataService.deleteSCoureInDepartment(id).subscribe((ob:any)=>{
       if(ob.success){
         this.toast.success('Course Deleted Successfully. Make sure you regenarate the Time table involved', 'Success');
+   
+        let filterd  =      this.courses.filter((ele:any)=>{
+          console.log(ele);
+          
+          return ele._id+"" != id
+        });
+       this.courses = filterd;
+        
       }
       else{
         this.toast.error("Failed to delete Course.","Failed");

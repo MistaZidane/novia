@@ -22,7 +22,7 @@
                                 <td class="flex-strat">{{item.name}}</td>
                                 <td class="flex-center">
                                     <div class="action">
-                                        <a [routerLink]="['edit-campus',item._id]" routerLinkActive="router-link-active"  class="edit"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a [routerLink]="['edit-campus',item._id]" routerLinkActive="router-link-active"  class="edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                         <a (click)="showDeleteBtn(item._id)" *ngIf="!item.showDelete" class="patial-delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         <a (click)="delete(item._id)" *ngIf="item.showDelete"  class="delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     </div>

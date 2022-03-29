@@ -1,12 +1,18 @@
-import {  Component, OnInit } from '@angular/core';
+import {  Component, OnInit,ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-
+import * as jsPDF from 'jspdf';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+import  htmlToPdfmake from 'html-to-pdfmake';
+import 'jspdf-autotable';
 @Component({
   selector: 'app-seating',
   templateUrl: './seating.component.html',
   styleUrls: ['./seating.component.css']
 })
 export class SeatingComponent implements OnInit {
+  @ViewChild('pdfTable') pdfTable: any;
   public showSemester:boolean = false;
   public showDepartment:boolean = false;
   public hasGeneratedData: boolean = false;
@@ -16,6 +22,22 @@ export class SeatingComponent implements OnInit {
   public departmentId = "";
   public semesters:any = [];
   constructor(private dataService: DataService) { }
+
+
+  public downloadAsPDF() {
+    const doc = new jsPDF.jsPDF({orientation:"l",
+    format: "a4"});
+   
+    const pdfTable = this.pdfTable.nativeElement;
+   let title =`  <h1>Seatings Table</h1> `.toUpperCase()
+    var html = htmlToPdfmake(title+pdfTable.innerHTML);
+     
+    const documentDefinition:any = { content: html, pageOrientation: 'landscape', pageSize: 'A4' };
+ 
+    pdfMake.createPdf(documentDefinition).download(`seatingsTable.pdf`)
+     
+  }
+
 
   ngOnInit(): void {
     this.dataService.getDepartments().subscribe((ob:any)=>{

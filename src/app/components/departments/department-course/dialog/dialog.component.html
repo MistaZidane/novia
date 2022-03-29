@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Edit Course</h2>
+<h2 mat-dialog-title *ngIf="hasData">Edit Course: {{activeData.course.title}} </h2>
 <mat-dialog-content class="mat-typography">
   
     <div style="width: 500px;" *ngIf="hasData">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="form-field">
                     <label for="">Needs Lab: {{needsLab}}</label>
-                    <select name="needsLab" #lb="ngModel"  required   id="" #lab (change)="selectNeedsLab(activeData._id,lab.value)" [(ngModel)]="activeData.needsLab">
+                    <select name="needsLab" #lb="ngModel"  required   id="" #lab [(ngModel)]="activeData.needsLab">
                         <option [value]="activeData.needsLab"  selected="true">{{activeData.needsLab}}</option>
                              <option [value]="!activeData.needsLab">{{!activeData.needsLab}}</option>
                     </select>

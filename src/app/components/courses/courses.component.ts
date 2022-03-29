@@ -51,7 +51,10 @@ public description: string = "";
     this.dataService.getDepartments().subscribe((ob:any)=>{
       if(ob.success){
         this.departmentList = ob.docs;
-        this.hasDepartments = true;
+        if(ob.docs.length >0){
+          this.hasDepartments = true;
+       }
+       
       }
       console.log(ob);
       
@@ -63,7 +66,10 @@ public description: string = "";
     this.dataService.getLecturers().subscribe((ob:any)=>{
       if(ob.success){
         this.lecturers = ob.docs;
-        this.hasLecturers = true;
+        if(ob.docs.length >0){
+           this.hasLecturers = true;
+        }
+       
       }
       console.log(ob);
       

@@ -20,15 +20,18 @@
                     </div>
                     <!-- <p>Add Lecturer</p> -->
                 </div>
-                <form class="" (ngSubmit)="generate()">
+                <form class="" (ngSubmit)="f.form.valid &&  generate()" #f="ngForm">
                     <div class="form-section">
                         
                         <div class="form-field" *ngIf="showCampus">
                             <label for="">Campus</label>
-                            <select name="campus"   [(ngModel)]="data.campus">
+                            <select  #mySelect #select="ngModel" required  name="campus" (change)="selectCampus(mySelect.value)"   [(ngModel)]="data.campus">
                                 <option [value]="item._id" *ngFor="let item of campuses" selected="true">{{item.name}}</option>
                                 
                             </select>
+                            <div *ngIf="f.submitted && select.invalid" class="invalid-feedback">
+                                <div *ngIf="select.errors?.required"> <p class="error">The  field is required</p></div>
+                            </div>
                         </div>
                         <div class="form-field" *ngIf="!showCampus">
                             <label for="">Campus</label>
@@ -37,10 +40,13 @@
                         </div>
                         <div class="form-field" *ngIf="showSemester">
                             <label for="">Semester</label>
-                            <select name="semester"   [(ngModel)]="data.semester">
+                            <select name="semester" #selectSem="ngModel" required   [(ngModel)]="data.semester">
                                 
                                 <option [value]="item._id" *ngFor="let item of semesters" selected="true">{{item.name}}</option>
                             </select>
+                            <div *ngIf="f.submitted && selectSem.invalid" class="invalid-feedback">
+                                <div *ngIf="selectSem.errors?.required"> <p class="error">The  field is required</p></div>
+                            </div>
                         </div>
                         <div class="form-field" *ngIf="!showSemester">
                             <label for="">Semester</label>
@@ -48,10 +54,12 @@
                             
                          </div>
                     
-                        <div class="btn-flex">
+                        <div class="btn-fle">
                            <!-- <p *ngIf="!courseSelected" style="color: lightcoral;">Select one or more courses</p> -->
                             <!-- <button *ngIf="hasCourses && courseSelected" class="btn btn-green">Add New</button> -->
+                            <p *ngIf="!hasClasses">Campus not selected Or No Class created for the selected Campus <a [routerLink]="['/campus']" routerLinkActive="router-link-active"  style="color:indianred ;">click to create classes</a> </p>
                             <button class="btn btn-green" *ngIf="showCampus && showSemester">Generate</button>
+                           
                             <!-- <a class="btn btn-green">Add New</a> -->
                         </div>
                     </div>

@@ -11,6 +11,7 @@ export class GenerateComponent implements OnInit {
   public showCampus:boolean = false;
   public showSemester:boolean = false;
   public campuses:any = [];
+  public hasClasses:boolean = false;
   public semesters:any = [];
 
 public data:any = {
@@ -34,6 +35,22 @@ public data:any = {
         this.semesters = ob.docs;
       }
     });
+  }
+  getClassesByCampuses(id:string){
+    this.dataService.getClassesByCampusId(id).subscribe((ob:any)=>{
+      if(ob.success){
+        if(ob.docs.length >0){
+          this.hasClasses = true;
+        }
+        else{
+          this.hasClasses = false;
+        }
+      }
+    })
+  }
+  selectCampus(id:any){
+    console.log(id);
+    this.getClassesByCampuses(id)
   }
   generate(){
     console.log(this.data);

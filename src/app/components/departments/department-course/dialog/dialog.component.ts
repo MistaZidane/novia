@@ -39,7 +39,7 @@ export class DialogComponent implements OnInit {
         
         this.activeData = ob.docs;
         this.hasData = true;
-        console.log("okay na");
+        console.log(ob.docs,"okay na");
       this.lecturerName = ob.docs.course.lecturers.find((el:any)=>{
          return el._id = ob.docs.lecturer;
         }).name;
@@ -117,36 +117,22 @@ else{
 }
 
 console.log(actualPeriod,"thereeeeeeee");
-
     this.dataService.editCourseInDepartment(this.activeData, this.data.id).subscribe((ob:any)=>{
       if(ob.success){
-        console.log(ob.docs);
+        console.log(ob, "ob when good");
         this.toastr.success("Saved","saved");
     
       }
+      else{
+        console.log(ob, "ob whe failed");
+        
+        this.toastr.error(ob.message,"Error");
+      }
+      
     })
     
     
   }
-    
-      selectLecturer(course_id:string,lect_id:string){
-        console.log(course_id,lect_id);
-        
-      }
-      selectSemester(course_id:string,semester:string){
-        console.log(course_id,semester);
-        
-      }
-      selectDay(course_id:string,day:string){
-    
-      }
-      selectPeriod(course_id:string,period:string){
-    
-      }
-      selectNeedsLab(course_id:string,labState:string){
-    console.log(labState);
-    
-      }
-  
+
 
 }

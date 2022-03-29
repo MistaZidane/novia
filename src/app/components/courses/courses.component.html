@@ -86,7 +86,7 @@
                                 
                                 <label for="">Departments</label>
                                 <div class="form-field " style="height: 100%; width: 100%;">
-                                    <p *ngIf="!hasDepartments" style="color: indianred;">No Department Created yet. A course must be assigned to aleast one department or general. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
+                                    <p *ngIf="!hasDepartments" style="color: indianred;">No Department Created yet. A course must be assigned to aleast one department or general. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/departments/add-department']"> Add Department</a> </p>
                                       <div class=" " *ngIf="hasDepartments">
                                           <div class="login-remember" >
                                               <div class="default-check">
@@ -104,7 +104,7 @@
                                     
                                   </div>
                                 <div class="form-field " style="height: 100%; width: 100%;" *ngIf="!generalCourse">
-                                    <p *ngIf="!hasDepartments" style="color: indianred;">No Department Created yet. A course must be assigned to aleast one department or general. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
+                                   
                                       <div class=" seletedCourses" *ngIf="hasDepartments">
                                           <div class="login-remember" *ngFor="let item of departmentList">
                                               <div class="default-check">
@@ -122,8 +122,12 @@
                                     
                                   </div>
                                   <label for="">Lecturer</label>
+                                  <div class="form-field " style="height: 100%; width: 100%;" *ngIf="!hasLecturers">
+                                    <p style="color: indianred;">No Lecturer Created yet. A course must be assigned to aleast one lecturer. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/lecturers']"> Add Lecturer</a> </p>
+                                </div>
+                                 
                                   <div class="form-field " style="height: 100%; width: 100%;" *ngIf="hasLecturers">
-                                    <p *ngIf="!hasLecturers" style="color: indianred;">No Lecturer Created yet. A course must be assigned to aleast one lecturer. <a style="color: indigo; text-decoration: underline;" [routerLink]="['/courses']"> Add Course</a> </p>
+                                 
                                       <div class=" seletedCourses" *ngIf="hasLecturers">
                                           <div class="login-remember" *ngFor="let item of lecturers">
                                               <div class="default-check">

@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { IntrojsService } from 'src/app/services/introjs.service';
 import { ShepherdService } from 'angular-shepherd';
-import {steps}  from "../../services/steps";
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -9,11 +8,11 @@ import {steps}  from "../../services/steps";
 })
 export class NavBarComponent implements OnInit,AfterViewInit {
 
-public step:any = steps;
+public steps:any = [];
   constructor(private introService: IntrojsService,private shepherdService: ShepherdService) { }
 
   ngOnInit(): void {
- 
+ this.steps = this.introService.steps;
   }
   ngAfterViewInit(): void {
     this.shepherdService.defaultStepOptions = {
@@ -42,7 +41,7 @@ startTour(){
     },
   ];
   this.shepherdService.addSteps(
-  this.step
+  this.steps
   );
     this.shepherdService.start();
 }
